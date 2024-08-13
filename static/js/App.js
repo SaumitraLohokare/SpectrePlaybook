@@ -10,10 +10,37 @@ export class App {
         this.playbookLayer = new PlaybookLayer();
 
         this.editState = EDIT_STATE.NONE
+        this.playbookLayer = new PlaybookLayer();
+
+        this.editState = EDIT_STATE.NONE
     }
+
 
     run() {
         this.initializeUI()
+    }
+
+    setEditState(state) {
+        switch (state) {
+            case "NONE":
+                this.editState = EDIT_STATE.NONE
+                break;
+            case "DRAW":
+                this.editState = EDIT_STATE.DRAW
+                this.drawLayer.setGlobalCompositeOperation('source-over')
+                break;
+            case "ERASE":
+                this.editState = EDIT_STATE.ERASE
+                this.drawLayer.setGlobalCompositeOperation('destination-out')
+                break;
+            case "COMMENT":
+                this.editState = EDIT_STATE.NONE
+                alert("Comments are under development.")
+                break;
+            default:
+                break;
+        }
+        console.log(`DrawLayer current editState: ${this.editState}`)
     }
 
     setEditState(state) {
@@ -67,6 +94,7 @@ export class App {
             this.baseLayer.resize()
             this.drawLayer.resize()
             this.playbookLayer.resize()
+            this.playbookLayer.resize()
         })
 
         // Map Dropdown
@@ -75,6 +103,7 @@ export class App {
             this.baseLayer.setCurrentMap(dropdown.value)
             this.baseLayer.resize()
             this.drawLayer.resize()
+            this.playbookLayer.resize()
             this.playbookLayer.resize()
         });
 
@@ -96,20 +125,24 @@ export class App {
         // Assign click events to buttons
         pointerBtn.onclick = () => {
             this.setEditState("NONE");
+            this.setEditState("NONE");
             setActiveButton(pointerBtn);
         };
 
         penBtn.onclick = () => {
+            this.setEditState("DRAW");
             this.setEditState("DRAW");
             setActiveButton(penBtn);
         };
 
         eraserBtn.onclick = () => {
             this.setEditState("ERASE");
+            this.setEditState("ERASE");
             setActiveButton(eraserBtn);
         };
 
         textBtn.onclick = () => {
+            this.setEditState("COMMENT");
             this.setEditState("COMMENT");
             setActiveButton(textBtn);
         };
@@ -139,6 +172,7 @@ export class App {
             }
         });
 
+
         document.addEventListener('wheel', (event) => {
             if (event.ctrlKey) {
                 event.preventDefault(); // Prevent zooming via mouse scroll
@@ -151,12 +185,15 @@ export class App {
             const sponsorsContainer = document.getElementById('sponsors-container');
             const abilitiesContainer = document.getElementById('abilities-container');
 
+
             optionsDropdown.addEventListener('change', (event) => {
                 const selectedValue = event.target.value;
+
 
                 // Hide all containers
                 sponsorsContainer.classList.add('hidden');
                 abilitiesContainer.classList.add('hidden');
+
 
                 // Show the appropriate container based on the selection
                 if (selectedValue === 'sponsors') {
@@ -165,6 +202,22 @@ export class App {
                     abilitiesContainer.classList.remove('hidden');
                 }
             });
+        });
+
+        // Keyboard shortcuts
+        // TODO: Might wanna add these to the canvasConatiner instead of document. Incase we implement adding comments to custon sticky notes.
+        document.addEventListener('keydown', (event) => {
+            switch (event.key) {
+                case 's':
+                    pointerBtn.click(); // Simulate button click
+                    break;
+                case 'd':
+                    penBtn.click(); // Simulate button click
+                    break;
+                case 'e':
+                    eraserBtn.click(); // Simulate button click
+                    break;
+            }
         });
 
         this.initializeAbilitiesButtons()
