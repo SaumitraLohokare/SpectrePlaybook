@@ -6,6 +6,9 @@ export class DrawLayer {
         this.editState = EDIT_STATE.NONE
         this.isDrawing = false
 
+        this.drawColor = "";
+        this.lineWidth = 1;
+
         this.resize()
 
         this.canvas.addEventListener('mousedown', (e) => {
@@ -39,6 +42,8 @@ export class DrawLayer {
     resize() {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
+        this.ctx.lineWidth = this.lineWidth
+        this.ctx.strokeStyle = this.drawColor
     }
 
     setEditState(state) {
@@ -65,10 +70,12 @@ export class DrawLayer {
     }
 
     setDrawColor(color) {
+        this.drawColor = color;
         this.ctx.strokeStyle = color;
     }
 
     setLineWidth(size) {
+        this.lineWidth = size;
         this.ctx.lineWidth = size;
     }
 }
