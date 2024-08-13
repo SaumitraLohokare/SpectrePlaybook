@@ -1,12 +1,50 @@
 export const ABILITY = {
     // Pinnacle International
     SPLINTER_GRENADE: './assets/sponsors/Pinnacle International/Splinter Grenade.png',
-    ADRENALINK: './assets/sponsors/Pinnacle International/Adrena-link.png',
+    ADRENALINK: './assets/sponsors/Pinnacle International/Adrena-Link.png',
     FLASH_GRENADE: './assets/sponsors/Pinnacle International/Flash Grenade.png',
+
+    // Morrgen United
+    HIDDEN_GRASP: './assets/sponsors/Morrgen United/Hidden Grasp.png',
+    MELTDOWN: './assets/sponsors/Morrgen United/Meltdown.png',
+    SMOKE_SHIFT: './assets/sponsors/Morrgen United/Smoke Shift.png',
+
+    // Bloom Technologies
+    HEX_BARRIER: './assets/sponsors/Bloom Technologies/Hex Barrier.png',
+    SWARM_GRENADE: './assets/sponsors/Bloom Technologies/Swarm Grenade.png',
+    TWIN_MEND: './assets/sponsors/Bloom Technologies/Twin Mend.png',
+
+    // Ryker Industries
+    ARC_SENTRY: './assets/sponsors/Ryker Industries/Arc Sentry.png',
+    HULL_MINE: './assets/sponsors/Ryker Industries/Hull Mine.png',
+    WAVE_SCAN: './assets/sponsors/Ryker Industries/Wave Scan.png',
+
+    // Vector Dynamics
+    DUAL_AMP: './assets/sponsors/Vector Dynamics/Dual Amp.png',
+    NANO_SPHERE: './assets/sponsors/Vector Dynamics/Nano Sphere.png',
+    VECTOR_WALL: './assets/sponsors/Vector Dynamics/Vector Wall.png',
+
+    // Ghostlink Collective
+    DEAD_ZONE: './assets/sponsors/Ghostlink Collective/Dead Zone.png',
+    DUPE: './assets/sponsors/Ghostlink Collective/Dupe.png',
+    PARTITION: './assets/sponsors/Ghostlink Collective/Partition.png',
+
+    // Muu Robotics
+    DAZZLER: './assets/sponsors/Muu Robotics/Dazzler.png',
+    HYPER_DOME: './assets/sponsors/Muu Robotics/Hyper Dome.png',
+    PATCHES: './assets/sponsors/Muu Robotics/Patches.png',
+
+    // Umbra Reconnaissance
+    GLARE_BURST: './assets/sponsors/Umbra Reconnaissance/Glare Burst.png',
+    PULSEFINDER: './assets/sponsors/Umbra Reconnaissance/Pulsefinder.png',
+    RECON_WING: './assets/sponsors/Umbra Reconnaissance/Recon Wing.png',
 }
+
 
 const PADDING = 8;
 const DEFAULT_ICON_SIZE = 32;
+const centerX = (window.innerWidth / 2) - (DEFAULT_ICON_SIZE / 2);
+const centerY = (window.innerHeight / 2) - (DEFAULT_ICON_SIZE / 2);
 
 function drawRoundedRect(context, x, y, width, height, radius, color) {
     context.beginPath();
@@ -26,21 +64,81 @@ function drawRoundedRect(context, x, y, width, height, radius, color) {
     context.fill();
 }
 
+
 export class AbilityFactory {
     static makeAbility(name, layerDraw) {
         switch (name) {
+            // Pinnacle International
             case ABILITY.SPLINTER_GRENADE:
-                return new IconAbility(400, 400, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.SPLINTER_GRENADE, layerDraw)
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.SPLINTER_GRENADE, layerDraw);
             case ABILITY.ADRENALINK:
-                return new IconAbility(450, 400, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.ADRENALINK, layerDraw)
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.ADRENALINK, layerDraw);
             case ABILITY.FLASH_GRENADE:
-                return new IconAbility(350, 400, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.FLASH_GRENADE, layerDraw)
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.FLASH_GRENADE, layerDraw);
+
+            // Morrgen United
+            case ABILITY.HIDDEN_GRASP:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HIDDEN_GRASP, layerDraw);
+            case ABILITY.MELTDOWN:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.MELTDOWN, layerDraw);
+            case ABILITY.SMOKE_SHIFT:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.SMOKE_SHIFT, layerDraw);
+
+            // Bloom Technologies
+            case ABILITY.HEX_BARRIER:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HEX_BARRIER, layerDraw);
+            case ABILITY.SWARM_GRENADE:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.SWARM_GRENADE, layerDraw);
+            case ABILITY.TWIN_MEND:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.TWIN_MEND, layerDraw);
+
+            // Ryker Industries
+            case ABILITY.ARC_SENTRY:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.ARC_SENTRY, layerDraw);
+            case ABILITY.HULL_MINE:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HULL_MINE, layerDraw);
+            case ABILITY.WAVE_SCAN:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.WAVE_SCAN, layerDraw);
+
+            // Vector Dynamics
+            case ABILITY.DUAL_AMP:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUAL_AMP, layerDraw);
+            case ABILITY.NANO_SPHERE:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.NANO_SPHERE, layerDraw);
+            case ABILITY.VECTOR_WALL:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.VECTOR_WALL, layerDraw);
+
+            // Ghostlink Collective
+            case ABILITY.DEAD_ZONE:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DEAD_ZONE, layerDraw);
+            case ABILITY.DUPE:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUPE, layerDraw);
+            case ABILITY.PARTITION:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PARTITION, layerDraw);
+
+            // Muu Robotics
+            case ABILITY.DAZZLER:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DAZZLER, layerDraw);
+            case ABILITY.HYPER_DOME:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HYPER_DOME, layerDraw);
+            case ABILITY.PATCHES:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PATCHES, layerDraw);
+
+            // Umbra Reconnaissance
+            case ABILITY.GLARE_BURST:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.GLARE_BURST, layerDraw);
+            case ABILITY.PULSEFINDER:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PULSEFINDER, layerDraw);
+            case ABILITY.RECON_WING:
+                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.RECON_WING, layerDraw);
+
             default:
-                console.error(`Tried to create an invalid ability: ${name}`)
+                console.error(`Tried to create an invalid ability: ${name}`);
                 break;
         }
     }
 }
+
 
 export class IconAbility {
     constructor(x, y, width, height, imgSrc, layerDraw) {
@@ -91,3 +189,7 @@ export class IconAbility {
         }
     }
 }
+
+// TODO: Add RadiusAbility
+// TODO: Add DirectionalAbility
+// TODO: Add LineAbility

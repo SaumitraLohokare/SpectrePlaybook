@@ -11,7 +11,7 @@ export class App {
 
         this.editState = EDIT_STATE.NONE
     }
-    
+
     run() {
         this.initializeUI()
     }
@@ -138,7 +138,7 @@ export class App {
                 event.preventDefault(); // Prevent the default zoom action
             }
         });
-        
+
         document.addEventListener('wheel', (event) => {
             if (event.ctrlKey) {
                 event.preventDefault(); // Prevent zooming via mouse scroll
@@ -150,14 +150,14 @@ export class App {
             const optionsDropdown = document.getElementById('options-dropdown');
             const sponsorsContainer = document.getElementById('sponsors-container');
             const abilitiesContainer = document.getElementById('abilities-container');
-        
+
             optionsDropdown.addEventListener('change', (event) => {
                 const selectedValue = event.target.value;
-        
+
                 // Hide all containers
                 sponsorsContainer.classList.add('hidden');
                 abilitiesContainer.classList.add('hidden');
-        
+
                 // Show the appropriate container based on the selection
                 if (selectedValue === 'sponsors') {
                     sponsorsContainer.classList.remove('hidden');
@@ -171,19 +171,118 @@ export class App {
     }
 
     initializeAbilitiesButtons() {
-        const splinterGrenade = document.getElementById("Splinter Grenade")
-        const adrenalink = document.getElementById("Adrena-link")
-        const flashGrenade = document.getElementById("Flash Grenade")
+        const splinterGrenade = document.getElementById("Splinter Grenade");
+        const adrenalink = document.getElementById("Adrena-link");
+        const flashGrenade = document.getElementById("Flash Grenade");
+
+        const hiddenGrasp = document.getElementById("Hidden Grasp");
+        console.log(hiddenGrasp)
+        const meltdown = document.getElementById("Meltdown");
+        const smokeShift = document.getElementById("Smoke Shift");
+
+        const hexBarrier = document.getElementById("Hex Barrier");
+        const swarmGrenade = document.getElementById("Swarm Grenade");
+        const twinMend = document.getElementById("Twin Mend");
+
+        const arcSentry = document.getElementById("Arc Sentry");
+        const hullMine = document.getElementById("Hull Mine");
+        const waveScan = document.getElementById("Wave Scan");
+
+        const dualAmp = document.getElementById("Dual Amp");
+        const nanoSphere = document.getElementById("Nano Sphere");
+        const vectorWall = document.getElementById("Vector Wall");
+
+        const deadZone = document.getElementById("Dead Zone");
+        const dupe = document.getElementById("Dupe");
+        const partition = document.getElementById("Partition");
+
+        const dazzler = document.getElementById("Dazzler");
+        const hyperDome = document.getElementById("Hyper Dome");
+        const patches = document.getElementById("Patches");
+
+        const glareBurst = document.getElementById("Glare Burst");
+        const pulsefinder = document.getElementById("Pulsefinder");
+        const reconWing = document.getElementById("Recon Wing");
 
         splinterGrenade.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.SPLINTER_GRENADE)
-        }
+            this.playbookLayer.addAbility(ABILITY.SPLINTER_GRENADE);
+        };
         adrenalink.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.ADRENALINK)
-        }
+            this.playbookLayer.addAbility(ABILITY.ADRENALINK);
+        };
         flashGrenade.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.FLASH_GRENADE)
-        }
+            this.playbookLayer.addAbility(ABILITY.FLASH_GRENADE);
+        };
+
+        hiddenGrasp.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.HIDDEN_GRASP);
+        };
+        meltdown.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.MELTDOWN);
+        };
+        smokeShift.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.SMOKE_SHIFT);
+        };
+
+        hexBarrier.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.HEX_BARRIER);
+        };
+        swarmGrenade.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.SWARM_GRENADE);
+        };
+        twinMend.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.TWIN_MEND);
+        };
+
+        arcSentry.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.ARC_SENTRY);
+        };
+        hullMine.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.HULL_MINE);
+        };
+        waveScan.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.WAVE_SCAN);
+        };
+
+        dualAmp.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.DUAL_AMP);
+        };
+        nanoSphere.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.NANO_SPHERE);
+        };
+        vectorWall.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.VECTOR_WALL);
+        };
+
+        deadZone.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.DEAD_ZONE);
+        };
+        dupe.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.DUPE);
+        };
+        partition.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.PARTITION);
+        };
+
+        dazzler.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.DAZZLER);
+        };
+        hyperDome.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.HYPER_DOME);
+        };
+        patches.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.PATCHES);
+        };
+
+        glareBurst.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.GLARE_BURST);
+        };
+        pulsefinder.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.PULSEFINDER);
+        };
+        reconWing.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.RECON_WING);
+        };
     }
 }
 
