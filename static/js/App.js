@@ -1,3 +1,4 @@
+import { ABILITY } from "./Abilities.js";
 import { BaseLayer } from "./BaseLayer.js";
 import { DrawLayer } from "./DrawLayer.js";
 import { PlaybookLayer } from "./PlaybookLayer.js";
@@ -117,5 +118,23 @@ export class App {
                 }
             });
         });
+
+        this.initializeAbilitiesButtons()
+    }
+
+    initializeAbilitiesButtons() {
+        const splinterGrenade = document.getElementById("Splinter Grenade")
+        const adrenalink = document.getElementById("Adrena-link")
+        const flashGrenade = document.getElementById("Flash Grenade")
+
+        splinterGrenade.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.SPLINTER_GRENADE)
+        }
+        adrenalink.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.ADRENALINK)
+        }
+        flashGrenade.onclick = () => {
+            this.playbookLayer.addAbility(ABILITY.FLASH_GRENADE)
+        }
     }
 }
