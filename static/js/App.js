@@ -43,29 +43,6 @@ export class App {
         console.log(`DrawLayer current editState: ${this.editState}`)
     }
 
-    setEditState(state) {
-        switch (state) {
-            case "NONE":
-                this.editState = EDIT_STATE.NONE
-                break;
-            case "DRAW":
-                this.editState = EDIT_STATE.DRAW
-                this.drawLayer.setGlobalCompositeOperation('source-over')
-                break;
-            case "ERASE":
-                this.editState = EDIT_STATE.ERASE
-                this.drawLayer.setGlobalCompositeOperation('destination-out')
-                break;
-            case "COMMENT":
-                this.editState = EDIT_STATE.NONE
-                alert("Comments are under development.")
-                break;
-            default:
-                break;
-        }
-        console.log(`DrawLayer current editState: ${this.editState}`)
-    }
-
     initializeUI() {
         const canvasContainer = document.querySelector('div.canvas-container')
         canvasContainer.addEventListener('mousedown', (e) => {
@@ -125,24 +102,20 @@ export class App {
         // Assign click events to buttons
         pointerBtn.onclick = () => {
             this.setEditState("NONE");
-            this.setEditState("NONE");
             setActiveButton(pointerBtn);
         };
 
         penBtn.onclick = () => {
-            this.setEditState("DRAW");
             this.setEditState("DRAW");
             setActiveButton(penBtn);
         };
 
         eraserBtn.onclick = () => {
             this.setEditState("ERASE");
-            this.setEditState("ERASE");
             setActiveButton(eraserBtn);
         };
 
         textBtn.onclick = () => {
-            this.setEditState("COMMENT");
             this.setEditState("COMMENT");
             setActiveButton(textBtn);
         };
@@ -165,10 +138,24 @@ export class App {
         this.drawLayer.setLineWidth(parseFloat(lineWidthInput.value))
 
         // Disable zoming
+        // Keyboard shortcuts
+        // TODO: Might wanna add these to the canvasConatiner instead of document. Incase we implement adding comments to custon sticky notes.
         document.addEventListener('keydown', (event) => {
             // Check for zoom key combinations: Ctrl + (plus or minus) or Ctrl + scroll
             if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0' || event.key === '+' || event.key === '_')) {
                 event.preventDefault(); // Prevent the default zoom action
+            }
+
+            switch (event.key) {
+                case 's':
+                    pointerBtn.click(); // Simulate button click
+                    break;
+                case 'd':
+                    penBtn.click(); // Simulate button click
+                    break;
+                case 'e':
+                    eraserBtn.click(); // Simulate button click
+                    break;
             }
         });
 
@@ -204,21 +191,6 @@ export class App {
             });
         });
 
-        // Keyboard shortcuts
-        // TODO: Might wanna add these to the canvasConatiner instead of document. Incase we implement adding comments to custon sticky notes.
-        document.addEventListener('keydown', (event) => {
-            switch (event.key) {
-                case 's':
-                    pointerBtn.click(); // Simulate button click
-                    break;
-                case 'd':
-                    penBtn.click(); // Simulate button click
-                    break;
-                case 'e':
-                    eraserBtn.click(); // Simulate button click
-                    break;
-            }
-        });
 
         this.initializeAbilitiesButtons()
     }
