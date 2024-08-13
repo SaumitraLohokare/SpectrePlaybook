@@ -1,12 +1,13 @@
 import { BaseLayer } from "./BaseLayer.js";
 import { DrawLayer } from "./DrawLayer.js";
+import "./CanvasInput.js";
 
 export class App {
     constructor() {
         this.baseLayer = new BaseLayer();
         this.drawLayer = new DrawLayer();
     }
-    
+
     run() {
         this.initializeUI()
     }
@@ -22,7 +23,6 @@ export class App {
         dropdown.addEventListener('change', () => {
             this.baseLayer.setCurrentMap(dropdown.value)
             this.baseLayer.resize()
-            this.drawLayer.resize()
         });
 
         // Toolbar Buttons
@@ -59,6 +59,23 @@ export class App {
         textBtn.onclick = () => {
             this.drawLayer.setEditState("COMMENT");
             setActiveButton(textBtn);
+            this.input = new CanvasInput({
+                canvas: document.getElementById('draw-layer'),
+                x: 300,
+                y: 300,
+                fontSize: 18,
+                fontFamily: 'Arial',
+                fontColor: '#212121',
+                fontWeight: 'bold',
+                width: 300,
+                padding: 8,
+                borderWidth: 1,
+                borderColor: '#000',
+                borderRadius: 3,
+                boxShadow: '1px 1px 0px #fff',
+                innerShadow: '0px 0px 5px rgba(0, 0, 0, 0.5)',
+                placeHolder: 'Enter message here...'
+            })
         };
 
         // Initialize the first button as selected (optional)
@@ -85,7 +102,7 @@ export class App {
                 event.preventDefault(); // Prevent the default zoom action
             }
         });
-        
+
         document.addEventListener('wheel', (event) => {
             if (event.ctrlKey) {
                 event.preventDefault(); // Prevent zooming via mouse scroll
@@ -97,14 +114,14 @@ export class App {
             const optionsDropdown = document.getElementById('options-dropdown');
             const sponsorsContainer = document.getElementById('sponsors-container');
             const abilitiesContainer = document.getElementById('abilities-container');
-        
+
             optionsDropdown.addEventListener('change', (event) => {
                 const selectedValue = event.target.value;
-        
+
                 // Hide all containers
                 sponsorsContainer.classList.add('hidden');
                 abilitiesContainer.classList.add('hidden');
-        
+
                 // Show the appropriate container based on the selection
                 if (selectedValue === 'sponsors') {
                     sponsorsContainer.classList.remove('hidden');
