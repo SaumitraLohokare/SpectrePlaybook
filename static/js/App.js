@@ -1,10 +1,12 @@
 import { BaseLayer } from "./BaseLayer.js";
 import { DrawLayer } from "./DrawLayer.js";
+import { PlaybookLayer } from "./PlaybookLayer.js";
 
 export class App {
     constructor() {
         this.baseLayer = new BaseLayer();
         this.drawLayer = new DrawLayer();
+        this.playbookLayer = new PlaybookLayer();
     }
     
     run() {
@@ -15,6 +17,7 @@ export class App {
         window.addEventListener('resize', () => {
             this.baseLayer.resize()
             this.drawLayer.resize()
+            this.playbookLayer.resize()
         })
 
         // Map Dropdown
@@ -23,6 +26,7 @@ export class App {
             this.baseLayer.setCurrentMap(dropdown.value)
             this.baseLayer.resize()
             this.drawLayer.resize()
+            this.playbookLayer.resize()
         });
 
         // Toolbar Buttons
