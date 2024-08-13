@@ -32,10 +32,18 @@ export class DrawLayer {
     }
 
     resize() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
-        this.ctx.lineWidth = this.lineWidth
-        this.ctx.strokeStyle = this.drawColor
+        const pixelRatio = window.devicePixelRatio || 1;
+        this.canvas.width = window.innerWidth * pixelRatio;
+        this.canvas.height = window.innerHeight * pixelRatio;
+        this.canvas.style.width = `${window.innerWidth}px`;
+        this.canvas.style.height = `${window.innerHeight}px`;
+
+        this.ctx.scale(pixelRatio, pixelRatio);
+        this.ctx.lineWidth = this.lineWidth;
+        this.ctx.strokeStyle = this.drawColor;
+        this.ctx.lineJoin = 'round';
+        this.ctx.lineCap = 'round';
+        this.ctx.imageSmoothingEnabled = true;
     }
 
     setDrawColor(color) {
