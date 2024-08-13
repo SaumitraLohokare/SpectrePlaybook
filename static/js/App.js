@@ -22,6 +22,7 @@ export class App {
         dropdown.addEventListener('change', () => {
             this.baseLayer.setCurrentMap(dropdown.value)
             this.baseLayer.resize()
+            this.drawLayer.resize()
         });
 
         // Toolbar Buttons
