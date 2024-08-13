@@ -41,6 +41,7 @@ export class PlaybookLayer {
     resize() {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
+        this.draw()
     }
 
     addAbility(name) {
