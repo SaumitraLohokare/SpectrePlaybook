@@ -167,6 +167,21 @@ export class App {
             });
         });
 
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (event) => {
+            switch (event.key) {
+                case 's':
+                    pointerBtn.click(); // Simulate button click
+                    break;
+                case 'd':
+                    penBtn.click(); // Simulate button click
+                    break;
+                case 'e':
+                    eraserBtn.click(); // Simulate button click
+                    break;
+            }
+        });
+
         this.initializeAbilitiesButtons()
     }
 
