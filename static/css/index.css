@@ -38,7 +38,7 @@ html, body {
     background-color: rgba(0, 0, 0, 0); /* Dark slate gray background for the canvas */
 }
 
-.canvas-container canvas#draw-layer {
+.canvas-container canvas#playbook-layer {
     position: absolute;
     top: 0;
     left: 0;
@@ -51,7 +51,7 @@ html, body {
 
 /* Style the top container for dropdown and buttons */
 .top-container {
-    z-index: 3;
+    z-index: 4;
     position: absolute;
     top: 20px; /* Distance from the top */
     left: 20px; /* Distance from the left edge */
@@ -208,7 +208,7 @@ html, body {
 
 /* Containers for Sponsors and Abilities */
 .separate-containers {
-    z-index: 3;
+    z-index: 4;
     position: fixed; /* Fixed position relative to the viewport */
     top: 80px; /* Distance from the top of the window (below the dropdown) */
     right: 20px; /* Distance from the right edge of the window */

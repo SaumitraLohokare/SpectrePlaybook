@@ -8,13 +8,61 @@ export class App {
         this.baseLayer = new BaseLayer();
         this.drawLayer = new DrawLayer();
         this.playbookLayer = new PlaybookLayer();
+
+        this.editState = EDIT_STATE.NONE
     }
     
     run() {
         this.initializeUI()
     }
 
+    setEditState(state) {
+        switch (state) {
+            case "NONE":
+                this.editState = EDIT_STATE.NONE
+                break;
+            case "DRAW":
+                this.editState = EDIT_STATE.DRAW
+                this.drawLayer.setGlobalCompositeOperation('source-over')
+                break;
+            case "ERASE":
+                this.editState = EDIT_STATE.ERASE
+                this.drawLayer.setGlobalCompositeOperation('destination-out')
+                break;
+            case "COMMENT":
+                this.editState = EDIT_STATE.NONE
+                alert("Comments are under development.")
+                break;
+            default:
+                break;
+        }
+        console.log(`DrawLayer current editState: ${this.editState}`)
+    }
+
     initializeUI() {
+        const canvasContainer = document.querySelector('div.canvas-container')
+        canvasContainer.addEventListener('mousedown', (e) => {
+            if (this.editState === EDIT_STATE.NONE) {
+                this.playbookLayer.onMouseDown(e)
+            } else if (this.editState === EDIT_STATE.DRAW || this.editState === EDIT_STATE.ERASE) {
+                this.drawLayer.onMouseDown(e)
+            }
+        })
+        canvasContainer.addEventListener('mouseup', (e) => {
+            if (this.editState === EDIT_STATE.NONE) {
+                this.playbookLayer.onMouseUp(e)
+            } else if (this.editState === EDIT_STATE.DRAW || this.editState === EDIT_STATE.ERASE) {
+                this.drawLayer.onMouseUp(e)
+            }
+        })
+        canvasContainer.addEventListener('mousemove', (e) => {
+            if (this.editState === EDIT_STATE.NONE) {
+                this.playbookLayer.onMouseMove(e)
+            } else if (this.editState === EDIT_STATE.DRAW || this.editState === EDIT_STATE.ERASE) {
+                this.drawLayer.onMouseMove(e)
+            }
+        })
+
         window.addEventListener('resize', () => {
             this.baseLayer.resize()
             this.drawLayer.resize()
@@ -47,22 +95,22 @@ export class App {
 
         // Assign click events to buttons
         pointerBtn.onclick = () => {
-            this.drawLayer.setEditState("NONE");
+            this.setEditState("NONE");
             setActiveButton(pointerBtn);
         };
 
         penBtn.onclick = () => {
-            this.drawLayer.setEditState("DRAW");
+            this.setEditState("DRAW");
             setActiveButton(penBtn);
         };
 
         eraserBtn.onclick = () => {
-            this.drawLayer.setEditState("ERASE");
+            this.setEditState("ERASE");
             setActiveButton(eraserBtn);
         };
 
         textBtn.onclick = () => {
-            this.drawLayer.setEditState("COMMENT");
+            this.setEditState("COMMENT");
             setActiveButton(textBtn);
         };
 
@@ -137,4 +185,10 @@ export class App {
             this.playbookLayer.addAbility(ABILITY.FLASH_GRENADE)
         }
     }
+}
+
+const EDIT_STATE = {
+    NONE: "NONE",
+    DRAW: "DRAW",
+    ERASE: "ERASE",
 }
