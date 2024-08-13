@@ -48,10 +48,18 @@ export class IconAbility {
         this.y = y
         this.width = width
         this.height = height
+        this.layerDraw = layerDraw
 
         this.image = new Image()
         this.image.src = imgSrc
         this.image.onload = layerDraw
+    }
+
+    moveTo(x, y) {
+        console.log(x, y)
+        this.x = x
+        this.y = y
+        this.layerDraw()
     }
 
     draw(ctx) {
@@ -73,5 +81,13 @@ export class IconAbility {
         let y = this.y + (this.height - drawHeight) / 2
         
         ctx.drawImage(this.image, x, y, drawWidth , drawHeight)
+    }
+
+    checkPointCollision(x, y) {
+        return {
+            isColliding: x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height,
+            offsetX: x - this.x,
+            offsetY: y - this.y,
+        }
     }
 }
