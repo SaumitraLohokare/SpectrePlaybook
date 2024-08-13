@@ -51,7 +51,7 @@ export class PlaybookLayer {
     checkCollision() {
         console.log("checked collisions")
 
-        for (let i = this.items.length - 1; i >= 0; i--) {
+        for (let i = 0; i < this.items.length; i++) {
             const item = this.items[i]
             
             const collisionResult = item.checkPointCollision(this.mouseX, this.mouseY)
