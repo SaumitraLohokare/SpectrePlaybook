@@ -40,11 +40,17 @@ export const ABILITY = {
     RECON_WING: './assets/sponsors/Umbra Reconnaissance/Recon Wing.png',
 }
 
-
 const PADDING = 8;
 const DEFAULT_ICON_SIZE = 32;
-const centerX = (window.innerWidth / 2) - (DEFAULT_ICON_SIZE / 2);
-const centerY = (window.innerHeight / 2) - (DEFAULT_ICON_SIZE / 2);
+const canvasWidth = window.innerWidth;
+const canvasHeight = window.innerHeight;
+const startX = canvasWidth * 0.3; // 30% from the left
+const endX = canvasWidth * 0.7; // 70% from the left
+const startY = canvasHeight * 0.3; // 30% from the top
+const endY = canvasHeight * 0.7; // 70% from the top
+
+// Maintain a list of abilities added to the screen
+let abilitiesOnScreen = [];
 
 function drawRoundedRect(context, x, y, width, height, radius, color) {
     context.beginPath();
@@ -64,121 +70,82 @@ function drawRoundedRect(context, x, y, width, height, radius, color) {
     context.fill();
 }
 
+function isPositionOccupied(x, y) {
+    return abilitiesOnScreen.some(
+        ability =>
+            x < ability.x + ability.width + PADDING &&
+            x + DEFAULT_ICON_SIZE + PADDING > ability.x &&
+            y < ability.y + ability.height + PADDING &&
+            y + DEFAULT_ICON_SIZE + PADDING > ability.y
+    );
+}
+
+function findFreePosition() {
+    for (let y = startY; y + DEFAULT_ICON_SIZE <= endY; y += DEFAULT_ICON_SIZE + PADDING) {
+        for (let x = startX; x + DEFAULT_ICON_SIZE <= endX; x += DEFAULT_ICON_SIZE + PADDING) {
+            if (!isPositionOccupied(x, y)) {
+                return { x, y };
+            }
+        }
+    }
+    return null;
+}
 
 export class AbilityFactory {
     static makeAbility(name, layerDraw) {
-        switch (name) {
-            // Pinnacle International
-            case ABILITY.SPLINTER_GRENADE:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.SPLINTER_GRENADE, layerDraw);
-            case ABILITY.ADRENALINK:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.ADRENALINK, layerDraw);
-            case ABILITY.FLASH_GRENADE:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.FLASH_GRENADE, layerDraw);
+        let position = findFreePosition();
 
-            // Morrgen United
-            case ABILITY.HIDDEN_GRASP:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HIDDEN_GRASP, layerDraw);
-            case ABILITY.MELTDOWN:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.MELTDOWN, layerDraw);
-            case ABILITY.SMOKE_SHIFT:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.SMOKE_SHIFT, layerDraw);
-
-            // Bloom Technologies
-            case ABILITY.HEX_BARRIER:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HEX_BARRIER, layerDraw);
-            case ABILITY.SWARM_GRENADE:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.SWARM_GRENADE, layerDraw);
-            case ABILITY.TWIN_MEND:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.TWIN_MEND, layerDraw);
-
-            // Ryker Industries
-            case ABILITY.ARC_SENTRY:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.ARC_SENTRY, layerDraw);
-            case ABILITY.HULL_MINE:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HULL_MINE, layerDraw);
-            case ABILITY.WAVE_SCAN:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.WAVE_SCAN, layerDraw);
-
-            // Vector Dynamics
-            case ABILITY.DUAL_AMP:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUAL_AMP, layerDraw);
-            case ABILITY.NANO_SPHERE:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.NANO_SPHERE, layerDraw);
-            case ABILITY.VECTOR_WALL:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.VECTOR_WALL, layerDraw);
-
-            // Ghostlink Collective
-            case ABILITY.DEAD_ZONE:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DEAD_ZONE, layerDraw);
-            case ABILITY.DUPE:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUPE, layerDraw);
-            case ABILITY.PARTITION:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PARTITION, layerDraw);
-
-            // Muu Robotics
-            case ABILITY.DAZZLER:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DAZZLER, layerDraw);
-            case ABILITY.HYPER_DOME:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HYPER_DOME, layerDraw);
-            case ABILITY.PATCHES:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PATCHES, layerDraw);
-
-            // Umbra Reconnaissance
-            case ABILITY.GLARE_BURST:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.GLARE_BURST, layerDraw);
-            case ABILITY.PULSEFINDER:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PULSEFINDER, layerDraw);
-            case ABILITY.RECON_WING:
-                return new IconAbility(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.RECON_WING, layerDraw);
-
-            default:
-                console.error(`Tried to create an invalid ability: ${name}`);
-                break;
+        if (position) {
+            const { x, y } = position;  // Destructuring assignment to define currentX and currentY
+            const ability = new IconAbility(x, y, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, name, layerDraw);
+            abilitiesOnScreen.push(ability);
+            return ability;
+        } else {
+            console.error(`No free position found for ability: ${name}`);
+            return null;
         }
     }
 }
 
-
 export class IconAbility {
     constructor(x, y, width, height, imgSrc, layerDraw) {
-        this.x = x
-        this.y = y
-        this.width = width
-        this.height = height
-        this.layerDraw = layerDraw
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.layerDraw = layerDraw;
 
-        this.image = new Image()
-        this.image.src = imgSrc
-        this.image.onload = layerDraw
+        this.image = new Image();
+        this.image.src = imgSrc;
+        this.image.onload = layerDraw;
     }
 
     moveTo(x, y) {
-        console.log(x, y)
-        this.x = x
-        this.y = y
-        this.layerDraw()
+        console.log(x, y);
+        this.x = x;
+        this.y = y;
+        this.layerDraw();
     }
 
     draw(ctx) {
-        drawRoundedRect(ctx, this.x, this.y, this.width, this.height, 4, 'grey')
+        drawRoundedRect(ctx, this.x, this.y, this.width, this.height, 4, 'grey');
 
-        const imgWidth = this.image.width
-        const imgHeight = this.image.height
-        const aspectRatio = imgWidth / imgHeight
-        let drawWidth = 0
-        let drawHeight = 0
+        const imgWidth = this.image.width;
+        const imgHeight = this.image.height;
+        const aspectRatio = imgWidth / imgHeight;
+        let drawWidth = 0;
+        let drawHeight = 0;
         if (imgWidth > imgHeight) {
-            drawWidth = this.width - PADDING
-            drawHeight = drawWidth / aspectRatio
+            drawWidth = this.width - PADDING;
+            drawHeight = drawWidth / aspectRatio;
         } else {
-            drawHeight = this.height - PADDING
-            drawWidth = drawHeight * aspectRatio
-        }        
-        let x = this.x + (this.width - drawWidth) / 2
-        let y = this.y + (this.height - drawHeight) / 2
-        
-        ctx.drawImage(this.image, x, y, drawWidth , drawHeight)
+            drawHeight = this.height - PADDING;
+            drawWidth = drawHeight * aspectRatio;
+        }
+        let x = this.x + (this.width - drawWidth) / 2;
+        let y = this.y + (this.height - drawHeight) / 2;
+
+        ctx.drawImage(this.image, x, y, drawWidth, drawHeight);
     }
 
     checkPointCollision(x, y) {
@@ -186,10 +153,6 @@ export class IconAbility {
             isColliding: x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height,
             offsetX: x - this.x,
             offsetY: y - this.y,
-        }
+        };
     }
 }
-
-// TODO: Add RadiusAbility
-// TODO: Add DirectionalAbility
-// TODO: Add LineAbility
