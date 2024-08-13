@@ -47,6 +47,8 @@ const centerY = (window.innerHeight / 2) - (DEFAULT_ICON_SIZE / 2);
 
 // Maintain a list of abilities added to the screen
 let abilitiesOnScreen = [];
+let currentX = centerX;
+let currentY = centerY;
 
 function drawRoundedRect(context, x, y, width, height, radius, color) {
     context.beginPath();
@@ -66,24 +68,51 @@ function drawRoundedRect(context, x, y, width, height, radius, color) {
     context.fill();
 }
 
-export class AbilityFactory {
-    static makeAbility(name, layerDraw) {
-        let drawX = centerX;
-        let drawY = centerY;
+function isCenterFree() {
+    return !abilitiesOnScreen.some(
+        ability => ability.x === centerX && ability.y === centerY
+    );
+}
 
-        // Adjust position if there's already an ability at the center
-        if (abilitiesOnScreen.length > 0) {
-            const lastAbility = abilitiesOnScreen[abilitiesOnScreen.length - 1];
-            drawX = lastAbility.x + DEFAULT_ICON_SIZE + PADDING;
+function isPositionOccupied(x, y) {
+    return abilitiesOnScreen.some(
+        ability =>
+            x < ability.x + DEFAULT_ICON_SIZE + PADDING &&
+            x + DEFAULT_ICON_SIZE + PADDING > ability.x &&
+            y < ability.y + DEFAULT_ICON_SIZE + PADDING &&
+            y + DEFAULT_ICON_SIZE + PADDING > ability.y
+    );
+}
 
-            // If the new position would go beyond the screen width, reset to the center
-            if (drawX + DEFAULT_ICON_SIZE > window.innerWidth) {
-                drawX = centerX;
-                drawY += DEFAULT_ICON_SIZE + PADDING; // Move to the next line
-            }
+function findNextAvailablePosition() {
+    while (isPositionOccupied(currentX, currentY)) {
+        currentX += DEFAULT_ICON_SIZE + PADDING;
+        
+        // If the new position would go beyond the screen width, reset to the left and move down
+        if (currentX + DEFAULT_ICON_SIZE > window.innerWidth) {
+            currentX = PADDING; // Start from the left side
+            currentY += DEFAULT_ICON_SIZE + PADDING; // Move to the next line
         }
 
-        const ability = new IconAbility(drawX, drawY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, name, layerDraw);
+        // If the new position would go beyond the screen height, reset to the top and start overwriting from top (optional)
+        if (currentY + DEFAULT_ICON_SIZE > window.innerHeight) {
+            currentX = centerX; // Optionally reset to the center
+            currentY = PADDING; // Optionally reset to the top
+        }
+    }
+}
+
+export class AbilityFactory {
+    static makeAbility(name, layerDraw) {
+        // Check if the center is free
+        if (isCenterFree()) {
+            currentX = centerX;
+            currentY = centerY;
+        } else {
+            findNextAvailablePosition(); // Find the next available spot
+        }
+
+        const ability = new IconAbility(currentX, currentY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, name, layerDraw);
         abilitiesOnScreen.push(ability);
         return ability;
     }
