@@ -71,5 +71,66 @@ export class IconItem {
 }
 
 // TODO: Add RadiusItem
+export class RadiusItem {
+    constructor(x, y, width, height, radius, imgSrc, layerDraw, iconColor, radiusColor) {
+        this.x = x
+        this.y = y
+        this.width = width
+        this.height = height
+        this.radius = radius
+        this.layerDraw = layerDraw
+        this.iconColor = iconColor
+        this.radiusColor = radiusColor
+
+        this.image = new Image()
+        this.image.src = imgSrc
+        this.image.onload = layerDraw
+    }
+
+    moveTo(x, y) {
+        console.log(x, y)
+        this.x = x
+        this.y = y
+        this.layerDraw()
+    }
+
+    draw(ctx) {
+        drawRoundedRect(ctx, this.x, this.y, this.width, this.height, 4, this.iconColor)
+
+        const imgWidth = this.image.width
+        const imgHeight = this.image.height
+        const aspectRatio = imgWidth / imgHeight
+        let drawWidth = 0
+        let drawHeight = 0
+        if (imgWidth > imgHeight) {
+            drawWidth = this.width - PADDING
+            drawHeight = drawWidth / aspectRatio
+        } else {
+            drawHeight = this.height - PADDING
+            drawWidth = drawHeight * aspectRatio
+        }        
+        let x = this.x + (this.width - drawWidth) / 2
+        let y = this.y + (this.height - drawHeight) / 2
+        
+        ctx.drawImage(this.image, x, y, drawWidth , drawHeight)
+
+        const centerX = this.x + (this.width / 2)
+        const centerY = this.y + (this.height / 2)
+        ctx.beginPath()
+        ctx.arc(centerX, centerY, this.radius, 0, Math.PI * 2, false)
+        ctx.strokeStyle = this.radiusColor
+        ctx.lineWidth = 3
+        ctx.stroke()
+        ctx.closePath()
+    }
+
+    checkPointCollision(x, y) {
+        return {
+            isColliding: x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height,
+            offsetX: x - this.x,
+            offsetY: y - this.y,
+        }
+    }
+}
+
 // TODO: Add DirectionalItem
-// TODO: Add LineItem

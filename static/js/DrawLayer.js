@@ -1,5 +1,3 @@
-import { AbilityFactory } from "./Abilities.js";
-
 export class DrawLayer {
     constructor() {
         this.canvas = document.getElementById('draw-layer')
@@ -58,5 +56,10 @@ export class DrawLayer {
 
     setGlobalCompositeOperation(operation) {
         this.ctx.globalCompositeOperation = operation;
+    }
+
+    resetContextDefaults() {
+        this.ctx.strokeStyle = this.color;
+        this.ctx.lineWidth = this.lineWidth;
     }
 }

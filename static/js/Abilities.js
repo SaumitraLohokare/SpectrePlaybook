@@ -1,4 +1,4 @@
-import { IconItem, DEFAULT_ICON_SIZE } from "./PlaybookItems.js";
+import { IconItem, DEFAULT_ICON_SIZE, RadiusItem } from "./PlaybookItems.js";
 
 export const ABILITY = {
     // Pinnacle International
@@ -50,67 +50,67 @@ export class AbilityFactory {
         switch (name) {
             // Pinnacle International
             case ABILITY.SPLINTER_GRENADE:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.SPLINTER_GRENADE, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.SPLINTER_GRENADE, layerDraw, '#707070');
             case ABILITY.ADRENALINK:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.ADRENALINK, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.ADRENALINK, layerDraw, '#707070');
             case ABILITY.FLASH_GRENADE:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.FLASH_GRENADE, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.FLASH_GRENADE, layerDraw, '#707070');
 
             // Morrgen United
             case ABILITY.HIDDEN_GRASP:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HIDDEN_GRASP, layerDraw, 'grey');
+                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.HIDDEN_GRASP, layerDraw, '#707070', 'lightblue');
             case ABILITY.MELTDOWN:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.MELTDOWN, layerDraw, 'grey');
+                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.MELTDOWN, layerDraw, '#707070', 'lightblue');
             case ABILITY.SMOKE_SHIFT:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.SMOKE_SHIFT, layerDraw, 'grey');
+                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.SMOKE_SHIFT, layerDraw, '#707070', 'lightblue');
 
             // Bloom Technologies
             case ABILITY.HEX_BARRIER:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HEX_BARRIER, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HEX_BARRIER, layerDraw, '#707070');
             case ABILITY.SWARM_GRENADE:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.SWARM_GRENADE, layerDraw, 'grey');
+                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.SWARM_GRENADE, layerDraw, '#707070', 'lightblue');
             case ABILITY.TWIN_MEND:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.TWIN_MEND, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.TWIN_MEND, layerDraw, '#707070');
 
             // Ryker Industries
             case ABILITY.ARC_SENTRY:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.ARC_SENTRY, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.ARC_SENTRY, layerDraw, '#707070');
             case ABILITY.HULL_MINE:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HULL_MINE, layerDraw, 'grey');
+                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.HULL_MINE, layerDraw, '#707070', 'lightblue');
             case ABILITY.WAVE_SCAN:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.WAVE_SCAN, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.WAVE_SCAN, layerDraw, '#707070');
 
             // Vector Dynamics
             case ABILITY.DUAL_AMP:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUAL_AMP, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUAL_AMP, layerDraw, '#707070');
             case ABILITY.NANO_SPHERE:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.NANO_SPHERE, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.NANO_SPHERE, layerDraw, '#707070');
             case ABILITY.VECTOR_WALL:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.VECTOR_WALL, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.VECTOR_WALL, layerDraw, '#707070');
 
             // Ghostlink Collective
             case ABILITY.DEAD_ZONE:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DEAD_ZONE, layerDraw, 'grey');
+                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.DEAD_ZONE, layerDraw, '#707070', 'lightblue');
             case ABILITY.DUPE:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUPE, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUPE, layerDraw, '#707070');
             case ABILITY.PARTITION:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PARTITION, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PARTITION, layerDraw, '#707070');
 
             // Muu Robotics
             case ABILITY.DAZZLER:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DAZZLER, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DAZZLER, layerDraw, '#707070');
             case ABILITY.HYPER_DOME:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HYPER_DOME, layerDraw, 'grey');
+                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.HYPER_DOME, layerDraw, '#707070', 'lightblue');
             case ABILITY.PATCHES:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PATCHES, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PATCHES, layerDraw, '#707070');
 
             // Umbra Reconnaissance
             case ABILITY.GLARE_BURST:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.GLARE_BURST, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.GLARE_BURST, layerDraw, '#707070');
             case ABILITY.PULSEFINDER:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PULSEFINDER, layerDraw, 'grey');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.PULSEFINDER, layerDraw, '#707070');
             case ABILITY.RECON_WING:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.RECON_WING, layerDraw, 'grey');
+                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.RECON_WING, layerDraw, '#707070', 'lightblue');
 
             default:
                 console.error(`Tried to create an invalid ability: ${name}`);

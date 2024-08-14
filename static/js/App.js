@@ -109,11 +109,13 @@ export class App {
         penBtn.onclick = () => {
             this.setEditState("DRAW");
             setActiveButton(penBtn);
+            this.drawLayer.resetContextDefaults()
         };
-
+        
         eraserBtn.onclick = () => {
             this.setEditState("ERASE");
             setActiveButton(eraserBtn);
+            this.drawLayer.resetContextDefaults()
         };
 
         textBtn.onclick = () => {
