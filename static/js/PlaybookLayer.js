@@ -1,4 +1,5 @@
 import { AbilityFactory } from "./Abilities.js";
+import { SponsorFactory } from "./Sponsors.js";
 
 export class PlaybookLayer {
     constructor() {
@@ -46,7 +47,10 @@ export class PlaybookLayer {
 
     addAbility(name) {
         this.items.push(AbilityFactory.makeAbility(name, () => this.draw()))
-        console.log(this.items)
+    }
+
+    addSponsor(name) {
+        this.items.push(SponsorFactory.makeSponsor(name, () => this.draw()))
     }
 
     checkCollision() {

@@ -2,6 +2,7 @@ import { ABILITY } from "./Abilities.js";
 import { BaseLayer } from "./BaseLayer.js";
 import { DrawLayer } from "./DrawLayer.js";
 import { PlaybookLayer } from "./PlaybookLayer.js";
+import { SPONSOR } from "./Sponsors.js";
 
 export class App {
     constructor() {
@@ -193,6 +194,7 @@ export class App {
 
 
         this.initializeAbilitiesButtons()
+        this.initializeSponsorButtons()
     }
 
     initializeAbilitiesButtons() {
@@ -201,7 +203,6 @@ export class App {
         const flashGrenade = document.getElementById("Flash Grenade");
 
         const hiddenGrasp = document.getElementById("Hidden Grasp");
-        console.log(hiddenGrasp)
         const meltdown = document.getElementById("Meltdown");
         const smokeShift = document.getElementById("Smoke Shift");
 
@@ -308,6 +309,50 @@ export class App {
         reconWing.onclick = () => {
             this.playbookLayer.addAbility(ABILITY.RECON_WING);
         };
+    }
+
+    initializeSponsorButtons() {
+        const pinnacleInternational = document.getElementById("Pinnacle International");
+        const bloomTechnologies = document.getElementById("Bloom Technologies");
+        const ghostlinkCollective = document.getElementById("Ghostlink Collective");
+        const morrgenUnited = document.getElementById("Morrgen United");
+        const muuRobotics = document.getElementById("Muu Robotics");
+        const rykerIndustries = document.getElementById("Ryker Industries");
+        const umbraReconnaissance = document.getElementById("Umbra Reconnaissance");
+        const vectorDynamics = document.getElementById("Vector Dynamics");
+
+        bloomTechnologies.onclick = () => {
+            this.playbookLayer.addSponsor(SPONSOR.BLOOM_TECHNOLOGIES);
+        };
+
+        ghostlinkCollective.onclick = () => {
+            this.playbookLayer.addSponsor(SPONSOR.GHOSTLINK_COLLECTIVE);
+        };
+
+        morrgenUnited.onclick = () => {
+            this.playbookLayer.addSponsor(SPONSOR.MORRGEN_UNITED);
+        };
+
+        muuRobotics.onclick = () => {
+            this.playbookLayer.addSponsor(SPONSOR.MUU_ROBOTICS);
+        };
+
+        pinnacleInternational.onclick = () => {
+            this.playbookLayer.addSponsor(SPONSOR.PINNACLE_INTERNATIONAL);
+        };
+
+        rykerIndustries.onclick = () => {
+            this.playbookLayer.addSponsor(SPONSOR.RYKER_INDUSTRIES);
+        };
+
+        umbraReconnaissance.onclick = () => {
+            this.playbookLayer.addSponsor(SPONSOR.UMBRA_RECONNAISSANCE);
+        };
+
+        vectorDynamics.onclick = () => {
+            this.playbookLayer.addSponsor(SPONSOR.VECTOR_DYNAMICS);
+        };
+
     }
 }
 
