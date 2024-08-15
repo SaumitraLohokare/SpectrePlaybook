@@ -84,7 +84,7 @@ export class AbilityFactory {
             case ABILITY.DUAL_AMP:
                 return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUAL_AMP, layerDraw, '#707070');
             case ABILITY.NANO_SPHERE:
-                return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 8, 64, ABILITY.NANO_SPHERE, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.NANO_SPHERE, layerDraw, '#707070');
             case ABILITY.VECTOR_WALL:
                 return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 48, 64, ABILITY.VECTOR_WALL, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
 
@@ -92,7 +92,7 @@ export class AbilityFactory {
             case ABILITY.DEAD_ZONE:
                 return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.DEAD_ZONE, layerDraw, '#707070', 'lightblue');
             case ABILITY.DUPE:
-                return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 8, 64, ABILITY.DUPE, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
+                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUPE, layerDraw, '#707070');
             case ABILITY.PARTITION:
                 return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 8, 128, ABILITY.PARTITION, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
 
