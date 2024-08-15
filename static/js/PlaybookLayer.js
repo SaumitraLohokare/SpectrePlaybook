@@ -13,6 +13,8 @@ export class PlaybookLayer {
         this.collisionOffsetX = 0
         this.collisionOffsetY = 0
 
+        this.selectedGrabItemIndex = -1
+
         this.resize()
     }
 
@@ -26,6 +28,7 @@ export class PlaybookLayer {
         this.selectedItemIndex = -1
         this.collisionOffsetX = 0
         this.collisionOffsetY = 0
+        this.selectedGrabItemIndex = -1
     }
 
     onMouseMove(e) {
@@ -34,8 +37,9 @@ export class PlaybookLayer {
         this.mouseY = e.offsetY
 
         if (this.selectedItemIndex !== -1) {
-            console.log(this.items[this.selectedItemIndex])
             this.items[this.selectedItemIndex].moveTo(this.mouseX - this.collisionOffsetX, this.mouseY - this.collisionOffsetY)
+        } else if (this.selectedGrabItemIndex !== -1) {
+            this.items[this.selectedGrabItemIndex].rotateTowards(this.mouseX, this.mouseY)
         }
     }
 
@@ -65,6 +69,14 @@ export class PlaybookLayer {
                 this.selectedItemIndex = i
                 this.collisionOffsetX = collisionResult.offsetX
                 this.collisionOffsetY = collisionResult.offsetY
+            }
+
+            if (item.checkGrabCollision) {
+                const collisionResult = item.checkGrabCollision(this.mouseX, this.mouseY)
+                if (collisionResult) {
+                    console.log('Got a grab hit')
+                    this.selectedGrabItemIndex = i
+                }   
             }
         }
     }
