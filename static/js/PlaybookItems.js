@@ -19,14 +19,14 @@ function drawRoundedRect(context, x, y, width, height, radius, color) {
     context.fill();
 }
 
-function calculateAngle2(originX, originY, x, y) {
+function calculateAngle(originX, originY, x, y) {
     // Calculate the differences in coordinates
     const deltaX = x - originX;
     const deltaY = y - originY;
-    
+
     // Compute the angle using atan2
     const angle = Math.atan2(deltaY, deltaX);
-    
+
     return angle;
 }
 
@@ -34,15 +34,15 @@ function rotatePoint(x, y, originX, originY, angleRadians) {
     // Translate the point to the origin
     const xTranslated = x - originX;
     const yTranslated = y - originY;
-    
+
     // Perform the rotation
     const xRotated = xTranslated * Math.cos(angleRadians) - yTranslated * Math.sin(angleRadians);
     const yRotated = xTranslated * Math.sin(angleRadians) + yTranslated * Math.cos(angleRadians);
-    
+
     // Translate the point back to the original position
     const xNew = xRotated + originX;
     const yNew = yRotated + originY;
-    
+
     return { x: xNew, y: yNew };
 }
 
@@ -82,11 +82,11 @@ export class IconItem {
         } else {
             drawHeight = this.height - PADDING
             drawWidth = drawHeight * aspectRatio
-        }        
+        }
         let x = this.x + (this.width - drawWidth) / 2
         let y = this.y + (this.height - drawHeight) / 2
-        
-        ctx.drawImage(this.image, x, y, drawWidth , drawHeight)
+
+        ctx.drawImage(this.image, x, y, drawWidth, drawHeight)
     }
 
     checkPointCollision(x, y) {
@@ -135,11 +135,11 @@ export class RadiusItem {
         } else {
             drawHeight = this.height - PADDING
             drawWidth = drawHeight * aspectRatio
-        }        
+        }
         let x = this.x + (this.width - drawWidth) / 2
         let y = this.y + (this.height - drawHeight) / 2
-        
-        ctx.drawImage(this.image, x, y, drawWidth , drawHeight)
+
+        ctx.drawImage(this.image, x, y, drawWidth, drawHeight)
 
         const centerX = this.x + (this.width / 2)
         const centerY = this.y + (this.height / 2)
@@ -194,19 +194,19 @@ export class DirectionalItem {
         ctx.translate(centerX, centerY);
         ctx.rotate(this.rotation);
         ctx.fillStyle = this.directionColor
-        ctx.fillRect(-this.directionWidth/2, 0, this.directionWidth, this.directionLength);
+        ctx.fillRect(-this.directionWidth / 2, 0, this.directionWidth, this.directionLength);
         ctx.fillStyle = this.grabColor
         ctx.restore()
-        
+
         const grabPos = rotatePoint(centerX, centerY + this.directionLength + this.grabRadius * 2, centerX, centerY, this.rotation)
         ctx.beginPath()
         ctx.arc(grabPos.x, grabPos.y, this.grabRadius, 0, Math.PI * 2, false)
         ctx.fillStyle = this.grabColor
         ctx.fill()
         ctx.closePath()
-        
+
         drawRoundedRect(ctx, this.x, this.y, this.width, this.height, 4, this.iconColor)
-        
+
         const imgWidth = this.image.width
         const imgHeight = this.image.height
         const aspectRatio = imgWidth / imgHeight
@@ -218,11 +218,11 @@ export class DirectionalItem {
         } else {
             drawHeight = this.height - PADDING
             drawWidth = drawHeight * aspectRatio
-        }        
+        }
         let x = this.x + (this.width - drawWidth) / 2
         let y = this.y + (this.height - drawHeight) / 2
-        
-        ctx.drawImage(this.image, x, y, drawWidth , drawHeight)
+
+        ctx.drawImage(this.image, x, y, drawWidth, drawHeight)
     }
 
     checkPointCollision(x, y) {
@@ -239,16 +239,16 @@ export class DirectionalItem {
 
         const grabPos = rotatePoint(centerX, centerY + this.directionLength + this.grabRadius * 2, centerX, centerY, this.rotation)
 
-        return (x - grabPos.x) * (x - grabPos.x) + (y - grabPos.y) * (y - grabPos.y) <= this.grabRadius + 4
+        return (x - grabPos.x) * (x - grabPos.x) + (y - grabPos.y) * (y - grabPos.y) <= this.grabRadius * this.grabRadius
     }
 
     rotateTowards(x, y) {
         console.log(`Going to face: ${x}, ${y}`)
         const centerX = this.x + (this.width / 2)
         const centerY = this.y + (this.height / 2)
-        
-        const rotation = calculateAngle2(x, y, centerX, centerY)
-        
+
+        const rotation = calculateAngle(x, y, centerX, centerY)
+
         this.rotation = rotation + Math.PI / 2
         this.layerDraw()
     }
