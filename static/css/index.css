@@ -154,6 +154,9 @@ body {
     width: 24px;
     /* Size of the icons */
     height: 24px;
+
+    user-select: none;
+    /* Prevent text/image selection */
 }
 
 /* Button hover effects */
@@ -406,6 +409,8 @@ body {
     /* Fixed height for images */
     width: auto;
     /* Maintain aspect ratio */
+    user-select: none;
+    /* Prevent text/image selection */
 }
 
 /* Style the abilities container */
@@ -469,6 +474,8 @@ body {
     /* Fixed height */
     width: auto;
     /* Maintain aspect ratio */
+    user-select: none;
+    /* Prevent text/image selection */
 }
 
 .abilities-button:hover {

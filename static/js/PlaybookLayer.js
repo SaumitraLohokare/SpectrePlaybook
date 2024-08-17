@@ -53,8 +53,26 @@ export class PlaybookLayer {
         this.items.push(AbilityFactory.makeAbility(name, () => this.draw()))
     }
 
+    addAbilityByDrag(name, x, y) {
+        this.items.push(AbilityFactory.makeAbility(name, () => this.draw()))
+        this.selectedItemIndex = this.items.length - 1
+        this.items[this.selectedItemIndex].x = x
+        this.items[this.selectedItemIndex].y = y
+        this.collisionOffsetX = this.items[this.selectedItemIndex].width / 2
+        this.collisionOffsetY = this.items[this.selectedItemIndex].height / 2
+    }
+
     addSponsor(name) {
         this.items.push(SponsorFactory.makeSponsor(name, () => this.draw()))
+    }
+
+    addSponsorByDrag(name, x, y) {
+        this.items.push(SponsorFactory.makeSponsor(name, () => this.draw()))
+        this.selectedItemIndex = this.items.length - 1
+        this.items[this.selectedItemIndex].x = x
+        this.items[this.selectedItemIndex].y = y
+        this.collisionOffsetX = this.items[this.selectedItemIndex].width / 2
+        this.collisionOffsetY = this.items[this.selectedItemIndex].height / 2
     }
 
     checkCollision() {
@@ -62,7 +80,7 @@ export class PlaybookLayer {
 
         for (let i = 0; i < this.items.length; i++) {
             const item = this.items[i]
-            
+
             const collisionResult = item.checkPointCollision(this.mouseX, this.mouseY)
             if (collisionResult.isColliding) {
                 console.log('Got a hit')
@@ -76,7 +94,7 @@ export class PlaybookLayer {
                 if (collisionResult) {
                     console.log('Got a grab hit')
                     this.selectedGrabItemIndex = i
-                }   
+                }
             }
         }
     }
