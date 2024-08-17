@@ -111,7 +111,7 @@ export class App {
             setActiveButton(penBtn);
             this.drawLayer.resetContextDefaults()
         };
-        
+
         eraserBtn.onclick = () => {
             this.setEditState("ERASE");
             setActiveButton(eraserBtn);
@@ -169,34 +169,11 @@ export class App {
             }
         }, { passive: false }); // { passive: false } is needed to prevent default action
 
-        // Placable container
-        document.addEventListener('DOMContentLoaded', () => {
-            const optionsDropdown = document.getElementById('options-dropdown');
-            const sponsorsContainer = document.getElementById('sponsors-container');
-            const abilitiesContainer = document.getElementById('abilities-container');
 
-
-            optionsDropdown.addEventListener('change', (event) => {
-                const selectedValue = event.target.value;
-
-
-                // Hide all containers
-                sponsorsContainer.classList.add('hidden');
-                abilitiesContainer.classList.add('hidden');
-
-
-                // Show the appropriate container based on the selection
-                if (selectedValue === 'sponsors') {
-                    sponsorsContainer.classList.remove('hidden');
-                } else if (selectedValue === 'abilities') {
-                    abilitiesContainer.classList.remove('hidden');
-                }
-            });
-        });
-
-
+        // TODO: Maybe eventually move these functions to a UI Utils file and only call it in here
         this.initializeAbilitiesButtons()
         this.initializeSponsorButtons()
+        this.initializePlacableTabs()
     }
 
     initializeAbilitiesButtons() {
@@ -355,6 +332,37 @@ export class App {
             this.playbookLayer.addSponsor(SPONSOR.VECTOR_DYNAMICS);
         };
 
+    }
+
+    initializePlacableTabs() {
+        const sponsorTabButton = document.querySelector("div#sponsor-tab-button")
+        const abilityTabButton = document.querySelector("div#ability-tab-button")
+        const miscellanousTabButton = document.querySelector("div#miscellaneous-tab-button")
+
+        const sponsorsContainer = document.getElementById('sponsors-container');
+        const abilitiesContainer = document.getElementById('abilities-container');
+        const miscellaneousContainer = document.getElementById('miscellaneous-container');
+
+        function hideContainers() {
+            sponsorsContainer.classList.add("hidden")
+            abilitiesContainer.classList.add("hidden")
+            miscellaneousContainer.classList.add("hidden")
+        }
+
+        sponsorTabButton.addEventListener('mouseover', () => {
+            hideContainers()
+            sponsorsContainer.classList.remove("hidden")
+        })
+
+        abilityTabButton.addEventListener('mouseover', () => {
+            hideContainers()
+            abilitiesContainer.classList.remove("hidden")
+        })
+
+        miscellanousTabButton.addEventListener('mouseover', () => {
+            hideContainers()
+            miscellaneousContainer.classList.remove('hidden')
+        })
     }
 }
 

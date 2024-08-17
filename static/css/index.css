@@ -1,12 +1,17 @@
 /* Ensure the body and html elements take up the full viewport */
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
-    position: relative; /* To allow absolute positioning of child elements */
-    background-color: #292929; /* Dark background for the entire page */
-    color: #e0e0e0; /* Light text color for contrast */
-    font-family: 'Roboto', sans-serif; /* Apply the font */
+    position: relative;
+    /* To allow absolute positioning of child elements */
+    background-color: #292929;
+    /* Dark background for the entire page */
+    color: #e0e0e0;
+    /* Light text color for contrast */
+    font-family: 'Roboto', sans-serif;
+    /* Apply the font */
 }
 
 .canvas-container {
@@ -24,7 +29,8 @@ html, body {
     display: block;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0); /* Dark slate gray background for the canvas */
+    background-color: rgba(0, 0, 0, 0);
+    /* Dark slate gray background for the canvas */
 }
 
 .canvas-container canvas#draw-layer {
@@ -35,7 +41,8 @@ html, body {
     display: block;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0); /* Dark slate gray background for the canvas */
+    background-color: rgba(0, 0, 0, 0);
+    /* Dark slate gray background for the canvas */
 }
 
 .canvas-container canvas#playbook-layer {
@@ -46,38 +53,51 @@ html, body {
     display: block;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0); /* Dark slate gray background for the canvas */
+    background-color: rgba(0, 0, 0, 0);
+    /* Dark slate gray background for the canvas */
 }
 
 /* Style the top container for dropdown and buttons */
 .top-container {
     z-index: 4;
     position: absolute;
-    top: 20px; /* Distance from the top */
-    left: 20px; /* Distance from the left edge */
+    top: 20px;
+    /* Distance from the top */
+    left: 20px;
+    /* Distance from the left edge */
     display: flex;
-    align-items: center; /* Center items vertically */
-    gap: 10px; /* Space between dropdown and button container */
+    align-items: center;
+    /* Center items vertically */
+    gap: 10px;
+    /* Space between dropdown and button container */
 }
 
 /* Style the dropdown container */
 .dropdown-container {
     display: flex;
     align-items: center;
-    background: rgba(33, 33, 33, 1); /* Darker background with slight transparency */
-    padding: 8px; /* Adjust padding to align with button height */
-    border-radius: 8px; /* Rounded corners for the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Stronger shadow for better contrast */
+    background: rgba(33, 33, 33, 1);
+    /* Darker background with slight transparency */
+    padding: 8px;
+    /* Adjust padding to align with button height */
+    border-radius: 8px;
+    /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow for better contrast */
 }
 
 /* Style the dropdown itself */
 .dropdown {
     border: none;
     border-radius: 6px;
-    background-color: #333; /* Dark background for the dropdown */
-    color: #e0e0e0; /* Light text color */
-    padding: 0 8px; /* Horizontal padding */
-    height: 40px; /* Match button height */
+    background-color: #333;
+    /* Dark background for the dropdown */
+    color: #e0e0e0;
+    /* Light text color */
+    padding: 0 8px;
+    /* Horizontal padding */
+    height: 40px;
+    /* Match button height */
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -85,136 +105,211 @@ html, body {
 
 /* Dropdown hover effect */
 .dropdown:hover {
-    background-color: #444; /* Slightly lighter gray on hover */
+    background-color: #444;
+    /* Slightly lighter gray on hover */
 }
 
 /* Style the button container */
 .button-container {
     display: flex;
-    align-items: center; /* Center items vertically */
-    gap: 10px; /* Space between buttons and color picker */
-    background: rgba(33, 33, 33, 1); /* Darker background with slight transparency */
+    align-items: center;
+    /* Center items vertically */
+    gap: 10px;
+    /* Space between buttons and color picker */
+    background: rgba(33, 33, 33, 1);
+    /* Darker background with slight transparency */
     padding: 8px;
-    border-radius: 8px; /* Rounded corners for the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Stronger shadow for better contrast */
+    border-radius: 8px;
+    /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow for better contrast */
 }
 
 /* Style individual toolbar buttons */
 .toolbar-button {
-    background: none; /* Remove default background */
-    border: none; /* Remove default border */
-    padding: 8px; /* Add padding around the icon */
-    border-radius: 6px; /* Rounded corners for buttons */
-    background-color: #333; /* Dark background for buttons */
+    background: none;
+    /* Remove default background */
+    border: none;
+    /* Remove default border */
+    padding: 8px;
+    /* Add padding around the icon */
+    border-radius: 6px;
+    /* Rounded corners for buttons */
+    background-color: #333;
+    /* Dark background for buttons */
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
 /* Style for the selected (active) button */
 .toolbar-button.selected {
-    border: 2px solid #f4c542; /* Highlight border color */
-    background-color: #444; /* Slightly lighter background for selected button */
+    border: 2px solid #f4c542;
+    /* Highlight border color */
+    background-color: #444;
+    /* Slightly lighter background for selected button */
 }
 
 /* Style the button icons */
 .toolbar-button img {
-    width: 24px; /* Size of the icons */
+    width: 24px;
+    /* Size of the icons */
     height: 24px;
 }
 
 /* Button hover effects */
 .toolbar-button:hover {
-    background-color: #444; /* Slightly lighter gray on hover */
+    background-color: #444;
+    /* Slightly lighter gray on hover */
 }
 
 /* Button active effects */
 .toolbar-button:active {
-    transform: scale(0.95); /* Slightly shrink the button when pressed */
+    transform: scale(0.95);
+    /* Slightly shrink the button when pressed */
 }
 
 /* Style the color picker container */
 .color-picker-container {
     display: flex;
-    align-items: center; /* Center items vertically */
-    gap: 5px; /* Space between the icon and the color picker */
+    align-items: center;
+    /* Center items vertically */
+    gap: 5px;
+    /* Space between the icon and the color picker */
 }
 
 /* Style the color picker icon */
 .color-picker-icon {
-    width: 24px; /* Size of the icon */
+    width: 24px;
+    /* Size of the icon */
     height: 24px;
 }
 
 /* Style the color picker */
 .color-picker {
-    border: none; /* Remove default border */
-    border-radius: 6px; /* Rounded corners */
-    background-color: #333; /* Dark background for the color picker */
-    padding: 2px; /* Small padding to fit the dark theme */
+    border: none;
+    /* Remove default border */
+    border-radius: 6px;
+    /* Rounded corners */
+    background-color: #333;
+    /* Dark background for the color picker */
+    padding: 2px;
+    /* Small padding to fit the dark theme */
     cursor: pointer;
-    height: 32px; /* Height of the color picker */
-    width: 32px; /* Width of the color picker */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for better contrast */
+    height: 32px;
+    /* Height of the color picker */
+    width: 32px;
+    /* Width of the color picker */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* Shadow for better contrast */
 }
 
 /* Color picker focus effect */
 .color-picker:focus {
-    outline: none; /* Remove default focus outline */
+    outline: none;
+    /* Remove default focus outline */
 }
 
 /* Style for the separator */
 .toolbar-separator {
     width: 1px;
-    height: 32px; /* Match the height of the color picker */
-    background-color: #444; /* Dark color for the separator */
-    margin: 0 10px; /* Space around the separator */
+    height: 32px;
+    /* Match the height of the color picker */
+    background-color: #444;
+    /* Dark color for the separator */
+    margin: 0 10px;
+    /* Space around the separator */
 }
 
 /* Style the line width container */
 .line-width-container {
     margin-left: 10px;
     display: flex;
-    align-items: center; /* Center items vertically */
-    gap: 5px; /* Space between the icon and the input field */
+    align-items: center;
+    /* Center items vertically */
+    gap: 5px;
+    /* Space between the icon and the input field */
 }
 
 /* Style the line width icon */
 .line-width-icon {
-    width: 24px; /* Size of the icon */
+    width: 24px;
+    /* Size of the icon */
     height: 24px;
 }
 
 /* Style the line width input field */
 .line-width-input {
-    width: 40px; /* Width of the input field */
-    padding: 4px; /* Padding inside the input field */
-    border-radius: 4px; /* Rounded corners */
-    border: 1px solid #444; /* Border matching the theme */
-    background-color: #333; /* Dark background */
-    color: #fff; /* Text color */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for better contrast */
+    width: 40px;
+    /* Width of the input field */
+    padding: 4px;
+    /* Padding inside the input field */
+    border-radius: 4px;
+    /* Rounded corners */
+    border: 1px solid #444;
+    /* Border matching the theme */
+    background-color: #333;
+    /* Dark background */
+    color: #fff;
+    /* Text color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* Shadow for better contrast */
 }
 
 /* Style the additional dropdown container */
 .additional-dropdown-container {
-    position: fixed; /* Fixed position relative to the viewport */
-    top: 20px; /* Distance from the top of the window */
-    right: 20px; /* Distance from the right edge of the window */
-    background: rgba(33, 33, 33, 1); /* Darker background with slight transparency */
-    padding: 8px; /* Adjust padding */
-    border-radius: 8px; /* Rounded corners for the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Stronger shadow for better contrast */
+    position: fixed;
+    /* Fixed position relative to the viewport */
+    top: 20px;
+    /* Distance from the top of the window */
+    right: 20px;
+    /* Distance from the right edge of the window */
+    background: rgba(33, 33, 33, 1);
+    /* Darker background with slight transparency */
+    padding: 8px;
+    /* Adjust padding */
+    border-radius: 8px;
+    /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow for better contrast */
+}
+
+.item-tab-buttons-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 20px;
+    right: 0px;
+    padding: 8px;
+    gap: 8px;
+}
+
+.item-tab-button {
+    writing-mode: vertical-rl;
+    background: rgba(33, 33, 33, 1);
+    /* Darker background with slight transparency */
+    padding: 8px;
+    /* Adjust padding */
+    border-radius: 8px;
+    /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow for better contrast */
+    cursor: pointer;
 }
 
 /* Containers for Sponsors and Abilities */
 .separate-containers {
     z-index: 4;
-    position: fixed; /* Fixed position relative to the viewport */
-    top: 80px; /* Distance from the top of the window (below the dropdown) */
-    right: 20px; /* Distance from the right edge of the window */
+    position: fixed;
+    /* Fixed position relative to the viewport */
+    top: 20px;
+    /* Distance from the top of the window (below the dropdown) */
+    right: 60px;
+    /* Distance from the right edge of the window */
     display: flex;
-    flex-direction: column; /* Stack containers vertically */
-    gap: 20px; /* Space between containers */
+    flex-direction: column;
+    /* Stack containers vertically */
+    gap: 20px;
+    /* Space between containers */
 }
 
 /* Hide containers by default */
@@ -224,71 +319,116 @@ html, body {
 
 /* Style the sponsors container and buttons */
 #sponsors-container {
-    background: rgba(33, 33, 33, 1); /* Darker background with slight transparency */
-    padding: 20px; /* Increased padding for better spacing */
-    border-radius: 12px; /* More rounded corners for a modern look */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); /* Deeper shadow for a modern feel */
+    background: rgba(33, 33, 33, 1);
+    /* Darker background with slight transparency */
+    padding: 20px;
+    /* Increased padding for better spacing */
+    border-radius: 12px;
+    /* More rounded corners for a modern look */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    /* Deeper shadow for a modern feel */
+    margin-top: 10px;
+}
+
+/* Style the miscellaneous container and buttons */
+#miscellaneous-container {
+    background: rgba(33, 33, 33, 1);
+    /* Darker background with slight transparency */
+    padding: 20px;
+    /* Increased padding for better spacing */
+    border-radius: 12px;
+    /* More rounded corners for a modern look */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    /* Deeper shadow for a modern feel */
     margin-top: 10px;
 }
 
 .button-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 15px; /* Increased space between buttons */
-    width: 100%; /* Ensure grid takes full width */
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns */
+    gap: 15px;
+    /* Increased space between buttons */
+    width: 100%;
+    /* Ensure grid takes full width */
 }
 
 .grid-button {
-    background: #444; /* Dark background for buttons */
-    border: none; /* Remove default border */
-    border-radius: 8px; /* Rounded corners for buttons */
-    padding: 10px; /* Remove default padding */
+    background: #444;
+    /* Dark background for buttons */
+    border: none;
+    /* Remove default border */
+    border-radius: 8px;
+    /* Rounded corners for buttons */
+    padding: 10px;
+    /* Remove default padding */
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Light shadow for modern effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    /* Light shadow for modern effect */
 }
 
 .grid-button:hover {
-    transform: scale(1.05); /* Slightly scale up on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); /* Deepen shadow on hover */
+    transform: scale(1.05);
+    /* Slightly scale up on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    /* Deepen shadow on hover */
 }
 
 .grid-button img {
-    height: 32px; /* Fixed height for images */
-    width: auto; /* Maintain aspect ratio */
+    height: 32px;
+    /* Fixed height for images */
+    width: auto;
+    /* Maintain aspect ratio */
 }
 
 /* Style the abilities container */
 #abilities-container {
-    background: rgba(33, 33, 33, 1); /* Darker background with slight transparency */
-    padding: 20px; /* Padding around the content */
-    border-radius: 12px; /* Rounded corners for the container */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); /* Strong shadow for better contrast */
-    max-height: 80vh; /* Limit height and enable scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
-    width: 320px; /* Fixed width for consistent layout */
-    position: absolute;
-    top: calc(100% + 20px); /* Position below the additional dropdown */
-    right: 20px; /* Align to the right */
+    background: rgba(33, 33, 33, 1);
+    /* Darker background with slight transparency */
+    padding: 20px;
+    /* Padding around the content */
+    border-radius: 12px;
+    /* Rounded corners for the container */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    /* Strong shadow for better contrast */
+    max-height: 80vh;
+    /* Limit height and enable scrolling */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    width: 320px;
+    margin-top: 10px;
+    /* Fixed width for consistent layout */
+    /* position: absolute; */
+    /* top: calc(100% + 20px); */
+    /* top: 20px; */
+    /* Position below the additional dropdown */
+    /* right: 60px; */
+    /* Align to the right */
 }
 
 /* Style for each abilities section */
 .abilities-section {
-    margin-bottom: 20px; /* Space between sections */
+    margin-bottom: 20px;
+    /* Space between sections */
 }
 
 .abilities-section h3 {
     margin-top: 0;
-    color: #e0e0e0; /* Light text color */
+    color: #e0e0e0;
+    /* Light text color */
 }
 
 /* Style the buttons container */
 .abilities-buttons {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 10px; /* Space between buttons */
-    margin-bottom: 20px; /* Space below buttons */
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columns */
+    gap: 10px;
+    /* Space between buttons */
+    margin-bottom: 20px;
+    /* Space below buttons */
 }
 
 /* Style for each ability button */
@@ -307,30 +447,38 @@ html, body {
 }
 
 .abilities-button img {
-    height: 32px; /* Fixed height */
-    width: auto; /* Maintain aspect ratio */
+    height: 32px;
+    /* Fixed height */
+    width: auto;
+    /* Maintain aspect ratio */
 }
 
 .abilities-button:hover {
-    background-color: #555; /* Slightly lighter gray on hover */
+    background-color: #555;
+    /* Slightly lighter gray on hover */
 }
 
 .section-separator {
     border: none;
     border-top: 1px solid #333;
-    margin: 10px 0; /* Space above and below the separator */
+    margin: 10px 0;
+    /* Space above and below the separator */
 }
 
 /* Optional: Style for the scrollbar if needed (depends on browser support) */
 #abilities-container::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+    width: 8px;
+    /* Width of the scrollbar */
 }
 
 #abilities-container::-webkit-scrollbar-thumb {
-    background-color: #555; /* Color of the scrollbar thumb */
-    border-radius: 4px; /* Rounded corners for the scrollbar thumb */
+    background-color: #555;
+    /* Color of the scrollbar thumb */
+    border-radius: 4px;
+    /* Rounded corners for the scrollbar thumb */
 }
 
 #abilities-container::-webkit-scrollbar-track {
-    background-color: #2e2e2e; /* Background color of the scrollbar track */
+    background-color: #2e2e2e;
+    /* Background color of the scrollbar track */
 }
