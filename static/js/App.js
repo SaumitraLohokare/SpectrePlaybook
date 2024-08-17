@@ -343,6 +343,10 @@ export class App {
         const abilitiesContainer = document.getElementById('abilities-container');
         const miscellaneousContainer = document.getElementById('miscellaneous-container');
 
+        const closeButtonSponsorsContainer = document.getElementById('close-button-sponsors-container')
+        const closeButtonAbilitiesContainer = document.getElementById('close-button-abilities-container')
+        const closeButtonMiscellaneousContainer = document.getElementById('close-button-miscellaneous-container')
+
         function hideContainers() {
             sponsorsContainer.classList.add("hidden")
             abilitiesContainer.classList.add("hidden")
@@ -362,6 +366,18 @@ export class App {
         miscellanousTabButton.addEventListener('mouseover', () => {
             hideContainers()
             miscellaneousContainer.classList.remove('hidden')
+        })
+
+        closeButtonSponsorsContainer.addEventListener('click', () => {
+            hideContainers()
+        })
+
+        closeButtonAbilitiesContainer.addEventListener("click", () => {
+            hideContainers()
+        })
+
+        closeButtonMiscellaneousContainer.addEventListener('click', () => {
+            hideContainers()
         })
     }
 }

@@ -317,6 +317,31 @@ body {
     display: none;
 }
 
+/* Style the close button as a modern rounded rectangle */
+.close-button {
+    position: absolute;
+    top: 10px;
+    left: -60px;
+    /* Adjust the left value to position it correctly */
+    background: rgba(33, 33, 33, 1);
+    /* Red background for visibility */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    /* Adjust padding for a rounded rectangle */
+    border-radius: 12px;
+    /* Rounded corners */
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 5;
+}
+
+/* Hover effect for the close button */
+.close-button:hover {
+    background: rgba(35, 35, 35, 0.9);
+}
+
 /* Style the sponsors container and buttons */
 #sponsors-container {
     background: rgba(33, 33, 33, 1);
@@ -399,13 +424,6 @@ body {
     /* Enable vertical scrolling */
     width: 320px;
     margin-top: 10px;
-    /* Fixed width for consistent layout */
-    /* position: absolute; */
-    /* top: calc(100% + 20px); */
-    /* top: 20px; */
-    /* Position below the additional dropdown */
-    /* right: 60px; */
-    /* Align to the right */
 }
 
 /* Style for each abilities section */
