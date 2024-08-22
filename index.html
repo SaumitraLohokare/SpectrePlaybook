@@ -50,12 +50,18 @@
             </div>
         </div>
         <!-- New Dropdown Container (Top Right) -->
-        <div class="additional-dropdown-container">
+        <!-- <div class="additional-dropdown-container">
             <select id="options-dropdown" class="dropdown">
                 <option value="hidden">Hidden</option>
                 <option value="sponsors">Sponsors</option>
                 <option value="abilities">Abilities</option>
             </select>
+        </div> -->
+
+        <div class="item-tab-buttons-container">
+            <div class="item-tab-button" id="sponsor-tab-button">Sponsors</div>
+            <div class="item-tab-button" id="ability-tab-button">Abilities</div>
+            <div class="item-tab-button" id="miscellaneous-tab-button">Miscellaneous</div>
         </div>
     </div>
 
@@ -63,41 +69,68 @@
     <div class="separate-containers">
         <!-- Sponsors Container -->
         <div id="sponsors-container" class="hidden">
+            <button id="close-button-sponsors-container" class="close-button">X</button>
             <div class="button-grid">
                 <!-- Repeat for 8 buttons -->
-                <button data-tooltip="Pinnacle International" id="Pinnacle International" class="grid-button"><img
-                        src="assets/sponsors/Pinnacle International/Pinnacle Logo.png"
-                        alt="Pinnacle International" /></button>
-                <button data-tooltip="Morrgen United" id="Morrgen United" class="grid-button"><img
-                        src="assets/sponsors/Morrgen United/Morrgen Logo.png" alt="Morrgen United" /></button>
-                <button data-tooltip="Bloom Technologies" id="Bloom Technologies" class="grid-button"><img
-                        src="assets/sponsors/Bloom Technologies/Bloom Logo.png" alt="Bloom Technologies" /></button>
-                <button data-tooltip="Ryker Industries" id="Ryker Industries" class="grid-button"><img
-                        src="assets/sponsors/Ryker Industries/Ryker Logo.png" alt="Ryker Industries" /></button>
-                <button data-tooltip="Vector Dynamics" id="Vector Dynamics" class="grid-button"><img
-                        src="assets/sponsors/Vector Dynamics/Vector Logo.png" alt="Vector Dynamics" /></button>
-                <button data-tooltip="Ghostlink Collective" id="Ghostlink Collective" class="grid-button"><img
-                        src="assets/sponsors/Ghostlink Collective/Ghostlink Logo.png"
-                        alt="Ghostlink Collective" /></button>
-                <button data-tooltip="Muu Robotics" id="Muu Robotics" class="grid-button"><img
-                        src="assets/sponsors/Muu Robotics/Muu Logo.png" alt="Muu Robotics" /></button>
-                <button data-tooltip="Umbra Reconnaissance" id="Umbra Reconnaissance" class="grid-button"><img
-                        src="assets/sponsors/Umbra Reconnaissance/Umbra Logo.png" alt="Umbra Reconnaissance" /></button>
+                <button data-tooltip="Pinnacle International" id="Pinnacle International" class="grid-button">
+                    <img src="assets/sponsors/Pinnacle International/Pinnacle Logo.png" alt="Pinnacle International"
+                        draggable="false" />
+                </button>
+
+                <button data-tooltip="Morrgen United" id="Morrgen United" class="grid-button">
+                    <img src="assets/sponsors/Morrgen United/Morrgen Logo.png" alt="Morrgen United" draggable="false" />
+                </button>
+
+                <button data-tooltip="Bloom Technologies" id="Bloom Technologies" class="grid-button">
+                    <img src="assets/sponsors/Bloom Technologies/Bloom Logo.png" alt="Bloom Technologies"
+                        draggable="false" />
+                </button>
+
+                <button data-tooltip="Ryker Industries" id="Ryker Industries" class="grid-button">
+                    <img src="assets/sponsors/Ryker Industries/Ryker Logo.png" alt="Ryker Industries"
+                        draggable="false" />
+                </button>
+
+                <button data-tooltip="Vector Dynamics" id="Vector Dynamics" class="grid-button">
+                    <img src="assets/sponsors/Vector Dynamics/Vector Logo.png" alt="Vector Dynamics"
+                        draggable="false" />
+                </button>
+
+                <button data-tooltip="Ghostlink Collective" id="Ghostlink Collective" class="grid-button">
+                    <img src="assets/sponsors/Ghostlink Collective/Ghostlink Logo.png" alt="Ghostlink Collective"
+                        draggable="false" />
+                </button>
+
+                <button data-tooltip="Muu Robotics" id="Muu Robotics" class="grid-button">
+                    <img src="assets/sponsors/Muu Robotics/Muu Logo.png" alt="Muu Robotics" draggable="false" />
+                </button>
+
+                <button data-tooltip="Umbra Reconnaissance" id="Umbra Reconnaissance" class="grid-button">
+                    <img src="assets/sponsors/Umbra Reconnaissance/Umbra Logo.png" alt="Umbra Reconnaissance"
+                        draggable="false" />
+                </button>
+
             </div>
         </div>
         <!-- Abilities Container -->
         <div id="abilities-container" class="hidden">
+            <button id="close-button-abilities-container" class="close-button">X</button>
             <!-- Pinnacle International Section -->
             <div class="abilities-section">
                 <h3>Pinnacle International</h3>
                 <div class="abilities-buttons">
-                    <button class="abilities-button" data-tooltip="Splinter Grenade" id="Splinter Grenade"><img
-                            src="assets/Sponsors/Pinnacle International/Splinter Grenade.png"
-                            alt="Splinter Grenade"></button>
-                    <button class="abilities-button" data-tooltip="Adrena-link" id="Adrena-link"><img
-                            src="assets/Sponsors/Pinnacle International/Adrena-Link.png" alt="Adrena-link"></button>
-                    <button class="abilities-button" data-tooltip="Flash Grenade" id="Flash Grenade"><img
-                            src="assets/Sponsors/Pinnacle International/Flash Grenade.png" alt="Flash Grenade"></button>
+                    <button class="abilities-button" data-tooltip="Splinter Grenade" id="Splinter Grenade">
+                        <img src="assets/Sponsors/Pinnacle International/Splinter Grenade.png" alt="Splinter Grenade"
+                            draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Adrena-link" id="Adrena-link">
+                        <img src="assets/Sponsors/Pinnacle International/Adrena-Link.png" alt="Adrena-link"
+                            draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Flash Grenade" id="Flash Grenade">
+                        <img src="assets/Sponsors/Pinnacle International/Flash Grenade.png" alt="Flash Grenade"
+                            draggable="false" />
+                    </button>
                 </div>
                 <hr class="section-separator" />
             </div>
@@ -106,12 +139,16 @@
             <div class="abilities-section">
                 <h3>Morrgen United</h3>
                 <div class="abilities-buttons">
-                    <button class="abilities-button" data-tooltip="Smoke Shift" id="Smoke Shift"><img
-                            src="assets/Sponsors/Morrgen United/Smoke Shift.png" alt="Smoke Shift"></button>
-                    <button class="abilities-button" data-tooltip="Meltdown" id="Meltdown"><img
-                            src="assets/Sponsors/Morrgen United/Meltdown.png" alt="Meltdown"></button>
-                    <button class="abilities-button" data-tooltip="Hidden Grasp" id="Hidden Grasp"><img
-                            src="assets/Sponsors/Morrgen United/Hidden Grasp.png" alt="Hidden Grasp"></button>
+                    <button class="abilities-button" data-tooltip="Smoke Shift" id="Smoke Shift">
+                        <img src="assets/Sponsors/Morrgen United/Smoke Shift.png" alt="Smoke Shift" draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Meltdown" id="Meltdown">
+                        <img src="assets/Sponsors/Morrgen United/Meltdown.png" alt="Meltdown" draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Hidden Grasp" id="Hidden Grasp">
+                        <img src="assets/Sponsors/Morrgen United/Hidden Grasp.png" alt="Hidden Grasp"
+                            draggable="false" />
+                    </button>
                 </div>
                 <hr class="section-separator" />
             </div>
@@ -120,12 +157,17 @@
             <div class="abilities-section">
                 <h3>Bloom Technologies</h3>
                 <div class="abilities-buttons">
-                    <button class="abilities-button" data-tooltip="Hex Barrier" id="Hex Barrier"><img
-                            src="assets/Sponsors/Bloom Technologies/Hex Barrier.png" alt="Hex Barrier"></button>
-                    <button class="abilities-button" data-tooltip="Twin Mend" id="Twin Mend"><img
-                            src="assets/Sponsors/Bloom Technologies/Twin Mend.png" alt="Twin Mend"></button>
-                    <button class="abilities-button" data-tooltip="Swarm Grenade" id="Swarm Grenade"><img
-                            src="assets/Sponsors/Bloom Technologies/Swarm Grenade.png" alt="Swarm Grenade"></button>
+                    <button class="abilities-button" data-tooltip="Hex Barrier" id="Hex Barrier">
+                        <img src="assets/Sponsors/Bloom Technologies/Hex Barrier.png" alt="Hex Barrier"
+                            draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Twin Mend" id="Twin Mend">
+                        <img src="assets/Sponsors/Bloom Technologies/Twin Mend.png" alt="Twin Mend" draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Swarm Grenade" id="Swarm Grenade">
+                        <img src="assets/Sponsors/Bloom Technologies/Swarm Grenade.png" alt="Swarm Grenade"
+                            draggable="false" />
+                    </button>
                 </div>
                 <hr class="section-separator" />
             </div>
@@ -134,12 +176,15 @@
             <div class="abilities-section">
                 <h3>Ryker Industries</h3>
                 <div class="abilities-buttons">
-                    <button class="abilities-button" data-tooltip="Wave Scan" id="Wave Scan"><img
-                            src="assets/Sponsors/Ryker Industries/Wave Scan.png" alt="Wave Scan"></button>
-                    <button class="abilities-button" data-tooltip="Hull Mine" id="Hull Mine"><img
-                            src="assets/Sponsors/Ryker Industries/Hull Mine.png" alt="Hull Mine"></button>
-                    <button class="abilities-button" data-tooltip="Arc Sentry" id="Arc Sentry"><img
-                            src="assets/Sponsors/Ryker Industries/Arc Sentry.png" alt="Arc Sentry"></button>
+                    <button class="abilities-button" data-tooltip="Wave Scan" id="Wave Scan">
+                        <img src="assets/Sponsors/Ryker Industries/Wave Scan.png" alt="Wave Scan" draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Hull Mine" id="Hull Mine">
+                        <img src="assets/Sponsors/Ryker Industries/Hull Mine.png" alt="Hull Mine" draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Arc Sentry" id="Arc Sentry">
+                        <img src="assets/Sponsors/Ryker Industries/Arc Sentry.png" alt="Arc Sentry" draggable="false" />
+                    </button>
                 </div>
                 <hr class="section-separator" />
             </div>
@@ -148,12 +193,17 @@
             <div class="abilities-section">
                 <h3>Vector Dynamics</h3>
                 <div class="abilities-buttons">
-                    <button class="abilities-button" data-tooltip="Dual Amp" id="Dual Amp"><img
-                            src="assets/Sponsors/Vector Dynamics/Dual Amp.png" alt="Dual Amp"></button>
-                    <button class="abilities-button" data-tooltip="Vector Wall" id="Vector Wall"><img
-                            src="assets/Sponsors/Vector Dynamics/Vector Wall.png" alt="Vector Wall"></button>
-                    <button class="abilities-button" data-tooltip="Nano Sphere" id="Nano Sphere"><img
-                            src="assets/Sponsors/Vector Dynamics/Nano Sphere.png" alt="Nano Sphere"></button>
+                    <button class="abilities-button" data-tooltip="Dual Amp" id="Dual Amp">
+                        <img src="assets/Sponsors/Vector Dynamics/Dual Amp.png" alt="Dual Amp" draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Vector Wall" id="Vector Wall">
+                        <img src="assets/Sponsors/Vector Dynamics/Vector Wall.png" alt="Vector Wall"
+                            draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Nano Sphere" id="Nano Sphere">
+                        <img src="assets/Sponsors/Vector Dynamics/Nano Sphere.png" alt="Nano Sphere"
+                            draggable="false" />
+                    </button>
                 </div>
                 <hr class="section-separator" />
             </div>
@@ -162,12 +212,17 @@
             <div class="abilities-section">
                 <h3>Ghostlink Collective</h3>
                 <div class="abilities-buttons">
-                    <button class="abilities-button" data-tooltip="Partition" id="Partition"><img
-                            src="assets/Sponsors/Ghostlink Collective/Partition.png" alt="Partition"></button>
-                    <button class="abilities-button" data-tooltip="Dupe" id="Dupe"><img
-                            src="assets/Sponsors/Ghostlink Collective/Dupe.png" alt="Dupe"></button>
-                    <button class="abilities-button" data-tooltip="Dead Zone" id="Dead Zone"><img
-                            src="assets/Sponsors/Ghostlink Collective/Dead Zone.png" alt="Dead Zone"></button>
+                    <button class="abilities-button" data-tooltip="Partition" id="Partition">
+                        <img src="assets/Sponsors/Ghostlink Collective/Partition.png" alt="Partition"
+                            draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Dupe" id="Dupe">
+                        <img src="assets/Sponsors/Ghostlink Collective/Dupe.png" alt="Dupe" draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Dead Zone" id="Dead Zone">
+                        <img src="assets/Sponsors/Ghostlink Collective/Dead Zone.png" alt="Dead Zone"
+                            draggable="false" />
+                    </button>
                 </div>
                 <hr class="section-separator" />
             </div>
@@ -176,12 +231,15 @@
             <div class="abilities-section">
                 <h3>Muu Robotics</h3>
                 <div class="abilities-buttons">
-                    <button class="abilities-button" data-tooltip="Patches" id="Patches"><img
-                            src="assets/Sponsors/Muu Robotics/Patches.png" alt="Patches"></button>
-                    <button class="abilities-button" data-tooltip="Dazzler" id="Dazzler"><img
-                            src="assets/Sponsors/Muu Robotics/Dazzler.png" alt="Dazzler"></button>
-                    <button class="abilities-button" data-tooltip="Hyper Dome" id="Hyper Dome"><img
-                            src="assets/Sponsors/Muu Robotics/Hyper Dome.png" alt="Hyper Dome"></button>
+                    <button class="abilities-button" data-tooltip="Patches" id="Patches">
+                        <img src="assets/Sponsors/Muu Robotics/Patches.png" alt="Patches" draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Dazzler" id="Dazzler">
+                        <img src="assets/Sponsors/Muu Robotics/Dazzler.png" alt="Dazzler" draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Hyper Dome" id="Hyper Dome">
+                        <img src="assets/Sponsors/Muu Robotics/Hyper Dome.png" alt="Hyper Dome" draggable="false" />
+                    </button>
                 </div>
                 <hr class="section-separator" />
             </div>
@@ -190,16 +248,32 @@
             <div class="abilities-section">
                 <h3>Umbra Reconnaissance</h3>
                 <div class="abilities-buttons">
-                    <button class="abilities-button" data-tooltip="Recon Wing" id="Recon Wing"><img
-                            src="assets/Sponsors/Umbra Reconnaissance/Recon Wing.png" alt="Recon Wing"></button>
-                    <button class="abilities-button" data-tooltip="Pulsefinder" id="Pulsefinder"><img
-                            src="assets/Sponsors/Umbra Reconnaissance/Pulsefinder.png" alt="Pulsefinder"></button>
-                    <button class="abilities-button" data-tooltip="Glare Burst" id="Glare Burst"><img
-                            src="assets/Sponsors/Umbra Reconnaissance/Glare Burst.png" alt="Glare Burst"></button>
+                    <button class="abilities-button" data-tooltip="Recon Wing" id="Recon Wing">
+                        <img src="assets/Sponsors/Umbra Reconnaissance/Recon Wing.png" alt="Recon Wing"
+                            draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Pulsefinder" id="Pulsefinder">
+                        <img src="assets/Sponsors/Umbra Reconnaissance/Pulsefinder.png" alt="Pulsefinder"
+                            draggable="false" />
+                    </button>
+                    <button class="abilities-button" data-tooltip="Glare Burst" id="Glare Burst">
+                        <img src="assets/Sponsors/Umbra Reconnaissance/Glare Burst.png" alt="Glare Burst"
+                            draggable="false" />
+                    </button>
                 </div>
             </div>
-
         </div>
+
+        <!-- Miscellaneous Container -->
+        <div id="miscellaneous-container" class="hidden">
+            <button id="close-button-miscellaneous-container" class="close-button">X</button>
+            <div class="button-grid">
+                <button data-tooltip="Zeus" id="Zeus" class="grid-button">
+                    <img src="assets/miscellaneous/ZEUS Icon.png" alt="Zeus" draggable="false" />
+                </button>
+            </div>
+        </div>
+
     </div>
 
     <!-- Canvas Element -->

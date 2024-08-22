@@ -3,6 +3,7 @@ import { BaseLayer } from "./BaseLayer.js";
 import { DrawLayer } from "./DrawLayer.js";
 import { PlaybookLayer } from "./PlaybookLayer.js";
 import { SPONSOR } from "./Sponsors.js";
+import { MISC } from "./Miscellaneous.js";
 
 export class App {
     constructor() {
@@ -111,7 +112,7 @@ export class App {
             setActiveButton(penBtn);
             this.drawLayer.resetContextDefaults()
         };
-        
+
         eraserBtn.onclick = () => {
             this.setEditState("ERASE");
             setActiveButton(eraserBtn);
@@ -169,34 +170,12 @@ export class App {
             }
         }, { passive: false }); // { passive: false } is needed to prevent default action
 
-        // Placable container
-        document.addEventListener('DOMContentLoaded', () => {
-            const optionsDropdown = document.getElementById('options-dropdown');
-            const sponsorsContainer = document.getElementById('sponsors-container');
-            const abilitiesContainer = document.getElementById('abilities-container');
 
-
-            optionsDropdown.addEventListener('change', (event) => {
-                const selectedValue = event.target.value;
-
-
-                // Hide all containers
-                sponsorsContainer.classList.add('hidden');
-                abilitiesContainer.classList.add('hidden');
-
-
-                // Show the appropriate container based on the selection
-                if (selectedValue === 'sponsors') {
-                    sponsorsContainer.classList.remove('hidden');
-                } else if (selectedValue === 'abilities') {
-                    abilitiesContainer.classList.remove('hidden');
-                }
-            });
-        });
-
-
+        // TODO: Maybe eventually move these functions to a UI Utils file and only call it in here
         this.initializeAbilitiesButtons()
         this.initializeSponsorButtons()
+        this.initializeMiscellaneousButtons()
+        this.initializePlacableTabs()
     }
 
     initializeAbilitiesButtons() {
@@ -232,85 +211,102 @@ export class App {
         const pulsefinder = document.getElementById("Pulsefinder");
         const reconWing = document.getElementById("Recon Wing");
 
-        splinterGrenade.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.SPLINTER_GRENADE);
-        };
-        adrenalink.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.ADRENALINK);
-        };
-        flashGrenade.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.FLASH_GRENADE);
-        };
+        splinterGrenade.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.SPLINTER_GRENADE, e.clientX, e.clientY);
+        });
 
-        hiddenGrasp.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.HIDDEN_GRASP);
-        };
-        meltdown.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.MELTDOWN);
-        };
-        smokeShift.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.SMOKE_SHIFT);
-        };
+        adrenalink.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.ADRENALINK, e.clientX, e.clientY);
+        });
 
-        hexBarrier.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.HEX_BARRIER);
-        };
-        swarmGrenade.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.SWARM_GRENADE);
-        };
-        twinMend.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.TWIN_MEND);
-        };
+        flashGrenade.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.FLASH_GRENADE, e.clientX, e.clientY);
+        });
 
-        arcSentry.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.ARC_SENTRY);
-        };
-        hullMine.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.HULL_MINE);
-        };
-        waveScan.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.WAVE_SCAN);
-        };
+        hiddenGrasp.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.HIDDEN_GRASP, e.clientX, e.clientY);
+        });
 
-        dualAmp.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.DUAL_AMP);
-        };
-        nanoSphere.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.NANO_SPHERE);
-        };
-        vectorWall.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.VECTOR_WALL);
-        };
+        meltdown.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.MELTDOWN, e.clientX, e.clientY);
+        });
 
-        deadZone.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.DEAD_ZONE);
-        };
-        dupe.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.DUPE);
-        };
-        partition.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.PARTITION);
-        };
+        smokeShift.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.SMOKE_SHIFT, e.clientX, e.clientY);
+        });
 
-        dazzler.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.DAZZLER);
-        };
-        hyperDome.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.HYPER_DOME);
-        };
-        patches.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.PATCHES);
-        };
+        hexBarrier.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.HEX_BARRIER, e.clientX, e.clientY);
+        });
 
-        glareBurst.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.GLARE_BURST);
-        };
-        pulsefinder.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.PULSEFINDER);
-        };
-        reconWing.onclick = () => {
-            this.playbookLayer.addAbility(ABILITY.RECON_WING);
-        };
+        swarmGrenade.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.SWARM_GRENADE, e.clientX, e.clientY);
+        });
+
+        twinMend.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.TWIN_MEND, e.clientX, e.clientY);
+        });
+
+        arcSentry.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.ARC_SENTRY, e.clientX, e.clientY);
+        });
+
+        hullMine.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.HULL_MINE, e.clientX, e.clientY);
+        });
+
+        waveScan.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.WAVE_SCAN, e.clientX, e.clientY);
+        });
+
+        dualAmp.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.DUAL_AMP, e.clientX, e.clientY);
+        });
+
+        nanoSphere.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.NANO_SPHERE, e.clientX, e.clientY);
+        });
+
+        vectorWall.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.VECTOR_WALL, e.clientX, e.clientY);
+        });
+
+        deadZone.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.DEAD_ZONE, e.clientX, e.clientY);
+        });
+
+        dupe.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.DUPE, e.clientX, e.clientY);
+        });
+
+        partition.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.PARTITION, e.clientX, e.clientY);
+        });
+
+        dazzler.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.DAZZLER, e.clientX, e.clientY);
+        });
+
+        hyperDome.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.HYPER_DOME, e.clientX, e.clientY);
+        });
+
+        patches.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.PATCHES, e.clientX, e.clientY);
+        });
+
+        glareBurst.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.GLARE_BURST, e.clientX, e.clientY);
+        });
+
+        pulsefinder.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.PULSEFINDER, e.clientX, e.clientY);
+        });
+
+        reconWing.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addAbilityByDrag(ABILITY.RECON_WING, e.clientX, e.clientY);
+        });
+
     }
 
     initializeSponsorButtons() {
@@ -323,38 +319,93 @@ export class App {
         const umbraReconnaissance = document.getElementById("Umbra Reconnaissance");
         const vectorDynamics = document.getElementById("Vector Dynamics");
 
-        bloomTechnologies.onclick = () => {
-            this.playbookLayer.addSponsor(SPONSOR.BLOOM_TECHNOLOGIES);
-        };
+        bloomTechnologies.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addSponsorByDrag(SPONSOR.BLOOM_TECHNOLOGIES, e.clientX, e.clientY);
+        });
 
-        ghostlinkCollective.onclick = () => {
-            this.playbookLayer.addSponsor(SPONSOR.GHOSTLINK_COLLECTIVE);
-        };
+        ghostlinkCollective.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addSponsorByDrag(SPONSOR.GHOSTLINK_COLLECTIVE, e.clientX, e.clientY);
+        });
 
-        morrgenUnited.onclick = () => {
-            this.playbookLayer.addSponsor(SPONSOR.MORRGEN_UNITED);
-        };
+        morrgenUnited.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addSponsorByDrag(SPONSOR.MORRGEN_UNITED, e.clientX, e.clientY);
+        });
 
-        muuRobotics.onclick = () => {
-            this.playbookLayer.addSponsor(SPONSOR.MUU_ROBOTICS);
-        };
+        muuRobotics.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addSponsorByDrag(SPONSOR.MUU_ROBOTICS, e.clientX, e.clientY);
+        });
 
-        pinnacleInternational.onclick = () => {
-            this.playbookLayer.addSponsor(SPONSOR.PINNACLE_INTERNATIONAL);
-        };
+        pinnacleInternational.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addSponsorByDrag(SPONSOR.PINNACLE_INTERNATIONAL, e.clientX, e.clientY);
+        });
 
-        rykerIndustries.onclick = () => {
-            this.playbookLayer.addSponsor(SPONSOR.RYKER_INDUSTRIES);
-        };
+        rykerIndustries.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addSponsorByDrag(SPONSOR.RYKER_INDUSTRIES, e.clientX, e.clientY);
+        });
 
-        umbraReconnaissance.onclick = () => {
-            this.playbookLayer.addSponsor(SPONSOR.UMBRA_RECONNAISSANCE);
-        };
+        umbraReconnaissance.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addSponsorByDrag(SPONSOR.UMBRA_RECONNAISSANCE, e.clientX, e.clientY);
+        });
 
-        vectorDynamics.onclick = () => {
-            this.playbookLayer.addSponsor(SPONSOR.VECTOR_DYNAMICS);
-        };
+        vectorDynamics.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addSponsorByDrag(SPONSOR.VECTOR_DYNAMICS, e.clientX, e.clientY);
+        });
 
+    }
+
+    initializeMiscellaneousButtons() {
+        const zeus = document.getElementById("Zeus");
+
+        zeus.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addMiscByDrag(MISC.ZEUS, e.clientX, e.clientY);
+        });
+    }
+
+    initializePlacableTabs() {
+        const sponsorTabButton = document.querySelector("div#sponsor-tab-button")
+        const abilityTabButton = document.querySelector("div#ability-tab-button")
+        const miscellanousTabButton = document.querySelector("div#miscellaneous-tab-button")
+
+        const sponsorsContainer = document.getElementById('sponsors-container');
+        const abilitiesContainer = document.getElementById('abilities-container');
+        const miscellaneousContainer = document.getElementById('miscellaneous-container');
+
+        const closeButtonSponsorsContainer = document.getElementById('close-button-sponsors-container')
+        const closeButtonAbilitiesContainer = document.getElementById('close-button-abilities-container')
+        const closeButtonMiscellaneousContainer = document.getElementById('close-button-miscellaneous-container')
+
+        function hideContainers() {
+            sponsorsContainer.classList.add("hidden")
+            abilitiesContainer.classList.add("hidden")
+            miscellaneousContainer.classList.add("hidden")
+        }
+
+        sponsorTabButton.addEventListener('mouseover', () => {
+            hideContainers()
+            sponsorsContainer.classList.remove("hidden")
+        })
+
+        abilityTabButton.addEventListener('mouseover', () => {
+            hideContainers()
+            abilitiesContainer.classList.remove("hidden")
+        })
+
+        miscellanousTabButton.addEventListener('mouseover', () => {
+            hideContainers()
+            miscellaneousContainer.classList.remove('hidden')
+        })
+
+        closeButtonSponsorsContainer.addEventListener('click', () => {
+            hideContainers()
+        })
+
+        closeButtonAbilitiesContainer.addEventListener("click", () => {
+            hideContainers()
+        })
+
+        closeButtonMiscellaneousContainer.addEventListener('click', () => {
+            hideContainers()
+        })
     }
 }
 
