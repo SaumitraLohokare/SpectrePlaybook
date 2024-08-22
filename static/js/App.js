@@ -3,6 +3,7 @@ import { BaseLayer } from "./BaseLayer.js";
 import { DrawLayer } from "./DrawLayer.js";
 import { PlaybookLayer } from "./PlaybookLayer.js";
 import { SPONSOR } from "./Sponsors.js";
+import { MISC } from "./Miscellaneous.js";
 
 export class App {
     constructor() {
@@ -173,6 +174,7 @@ export class App {
         // TODO: Maybe eventually move these functions to a UI Utils file and only call it in here
         this.initializeAbilitiesButtons()
         this.initializeSponsorButtons()
+        this.initializeMiscellaneousButtons()
         this.initializePlacableTabs()
     }
 
@@ -349,6 +351,14 @@ export class App {
             this.playbookLayer.addSponsorByDrag(SPONSOR.VECTOR_DYNAMICS, e.clientX, e.clientY);
         });
 
+    }
+
+    initializeMiscellaneousButtons() {
+        const zeus = document.getElementById("Zeus");
+
+        zeus.addEventListener('mousedown', (e) => {
+            this.playbookLayer.addMiscByDrag(MISC.ZEUS, e.clientX, e.clientY);
+        });
     }
 
     initializePlacableTabs() {

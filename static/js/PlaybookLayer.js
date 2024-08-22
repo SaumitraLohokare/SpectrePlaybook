@@ -1,5 +1,6 @@
 import { AbilityFactory } from "./Abilities.js";
 import { SponsorFactory } from "./Sponsors.js";
+import { MiscFactory } from "./Miscellaneous.js";
 
 export class PlaybookLayer {
     constructor() {
@@ -68,6 +69,19 @@ export class PlaybookLayer {
 
     addSponsorByDrag(name, x, y) {
         this.items.push(SponsorFactory.makeSponsor(name, () => this.draw()))
+        this.selectedItemIndex = this.items.length - 1
+        this.items[this.selectedItemIndex].x = x
+        this.items[this.selectedItemIndex].y = y
+        this.collisionOffsetX = this.items[this.selectedItemIndex].width / 2
+        this.collisionOffsetY = this.items[this.selectedItemIndex].height / 2
+    }
+
+    addMisc(name) {
+        this.items.push(MiscFactory.makeMisc(name, () => this.draw()))
+    }
+
+    addMiscByDrag(name, x, y) {
+        this.items.push(MiscFactory.makeMisc(name, () => this.draw()))
         this.selectedItemIndex = this.items.length - 1
         this.items[this.selectedItemIndex].x = x
         this.items[this.selectedItemIndex].y = y
