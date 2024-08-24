@@ -1,4 +1,4 @@
-import { IconItem, DEFAULT_ICON_SIZE, RadiusItem, DirectionalRectItem, DirectionalItem } from "./PlaybookItems.js";
+import { IconItem, DEFAULT_ICON_SIZE, RadiusItem, DirectionalRectItem, DirectionalItem, DirectionalArcItem } from "./PlaybookItems.js";
 
 export const ABILITY = {
     // Pinnacle International
@@ -62,19 +62,19 @@ export class AbilityFactory {
             case ABILITY.MELTDOWN:
                 return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.MELTDOWN, layerDraw, '#707070', 'lightblue');
             case ABILITY.SMOKE_SHIFT:
-                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.SMOKE_SHIFT, layerDraw, '#707070', 'lightblue');
+                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 24, ABILITY.SMOKE_SHIFT, layerDraw, '#70707000', '#00000080', true);
 
             // Bloom Technologies
             case ABILITY.HEX_BARRIER:
                 return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.HEX_BARRIER, layerDraw, '#707070');
             case ABILITY.SWARM_GRENADE:
-                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.SWARM_GRENADE, layerDraw, '#707070', 'lightblue');
+                return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 24, ABILITY.SWARM_GRENADE, layerDraw, '#70707000', '#FFD70080', true);
             case ABILITY.TWIN_MEND:
                 return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.TWIN_MEND, layerDraw, '#707070');
 
             // Ryker Industries
             case ABILITY.ARC_SENTRY:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.ARC_SENTRY, layerDraw, '#707070');
+                return new DirectionalArcItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 100, Math.PI, ABILITY.ARC_SENTRY, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
             case ABILITY.HULL_MINE:
                 return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.HULL_MINE, layerDraw, '#707070', 'lightblue');
             case ABILITY.WAVE_SCAN:
@@ -84,7 +84,7 @@ export class AbilityFactory {
             case ABILITY.DUAL_AMP:
                 return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUAL_AMP, layerDraw, '#707070');
             case ABILITY.NANO_SPHERE:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.NANO_SPHERE, layerDraw, '#707070');
+                return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.NANO_SPHERE, layerDraw, '#707070');
             case ABILITY.VECTOR_WALL:
                 return new DirectionalRectItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 48, 64, ABILITY.VECTOR_WALL, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
 
@@ -94,7 +94,7 @@ export class AbilityFactory {
             case ABILITY.DUPE:
                 return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUPE, layerDraw, '#707070');
             case ABILITY.PARTITION:
-                return new DirectionalRectItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 8, 128, ABILITY.PARTITION, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
+                return new DirectionalRectItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 6, 100, ABILITY.PARTITION, layerDraw, '#707070', 'rgba(173, 216, 230, 1)');
 
             // Muu Robotics
             case ABILITY.DAZZLER:
@@ -108,7 +108,7 @@ export class AbilityFactory {
             case ABILITY.GLARE_BURST:
                 return new DirectionalRectItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 20, 64, ABILITY.GLARE_BURST, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
             case ABILITY.PULSEFINDER:
-                return new DirectionalRectItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 48, 64, ABILITY.PULSEFINDER, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
+                return new DirectionalArcItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 64, Math.PI / 4, ABILITY.PULSEFINDER, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
             case ABILITY.RECON_WING:
                 return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.RECON_WING, layerDraw, '#707070', 'lightblue');
 
