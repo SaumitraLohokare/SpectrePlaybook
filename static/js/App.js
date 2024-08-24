@@ -13,8 +13,6 @@ export class App {
 
         this.editState = EDIT_STATE.NONE
         this.playbookLayer = new PlaybookLayer();
-
-        this.editState = EDIT_STATE.NONE
     }
 
 
@@ -23,17 +21,18 @@ export class App {
     }
 
     setEditState(state) {
+        this.drawLayer.resetState()
         switch (state) {
             case "NONE":
                 this.editState = EDIT_STATE.NONE
                 break;
             case "DRAW":
                 this.editState = EDIT_STATE.DRAW
-                this.drawLayer.setGlobalCompositeOperation('source-over')
+                this.drawLayer.startDrawing()
                 break;
             case "ERASE":
                 this.editState = EDIT_STATE.ERASE
-                this.drawLayer.setGlobalCompositeOperation('destination-out')
+                this.drawLayer.startErasing()
                 break;
             case "COMMENT":
                 this.editState = EDIT_STATE.NONE
