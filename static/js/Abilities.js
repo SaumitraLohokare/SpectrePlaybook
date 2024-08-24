@@ -1,4 +1,4 @@
-import { IconItem, DEFAULT_ICON_SIZE, RadiusItem, DirectionalItem } from "./PlaybookItems.js";
+import { IconItem, DEFAULT_ICON_SIZE, RadiusItem, DirectionalRectItem, DirectionalItem } from "./PlaybookItems.js";
 
 export const ABILITY = {
     // Pinnacle International
@@ -78,7 +78,7 @@ export class AbilityFactory {
             case ABILITY.HULL_MINE:
                 return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.HULL_MINE, layerDraw, '#707070', 'lightblue');
             case ABILITY.WAVE_SCAN:
-                return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 20, 256, ABILITY.WAVE_SCAN, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
+                return new DirectionalRectItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 20, 256, ABILITY.WAVE_SCAN, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
 
             // Vector Dynamics
             case ABILITY.DUAL_AMP:
@@ -86,15 +86,15 @@ export class AbilityFactory {
             case ABILITY.NANO_SPHERE:
                 return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.NANO_SPHERE, layerDraw, '#707070');
             case ABILITY.VECTOR_WALL:
-                return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 48, 64, ABILITY.VECTOR_WALL, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
+                return new DirectionalRectItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 48, 64, ABILITY.VECTOR_WALL, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
 
             // Ghostlink Collective
             case ABILITY.DEAD_ZONE:
                 return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.DEAD_ZONE, layerDraw, '#707070', 'lightblue');
             case ABILITY.DUPE:
-                return new IconItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUPE, layerDraw, '#707070');
+                return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, ABILITY.DUPE, layerDraw, '#707070');
             case ABILITY.PARTITION:
-                return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 8, 128, ABILITY.PARTITION, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
+                return new DirectionalRectItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 8, 128, ABILITY.PARTITION, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
 
             // Muu Robotics
             case ABILITY.DAZZLER:
@@ -106,9 +106,9 @@ export class AbilityFactory {
 
             // Umbra Reconnaissance
             case ABILITY.GLARE_BURST:
-                return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 20, 64, ABILITY.GLARE_BURST, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
+                return new DirectionalRectItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 20, 64, ABILITY.GLARE_BURST, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
             case ABILITY.PULSEFINDER:
-                return new DirectionalItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 48, 64, ABILITY.PULSEFINDER, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
+                return new DirectionalRectItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 48, 64, ABILITY.PULSEFINDER, layerDraw, '#707070', 'rgba(173, 216, 230, 0.5)');
             case ABILITY.RECON_WING:
                 return new RadiusItem(centerX, centerY, DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE, 46, ABILITY.RECON_WING, layerDraw, '#707070', 'lightblue');
 

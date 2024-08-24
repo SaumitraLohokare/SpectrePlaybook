@@ -160,7 +160,7 @@ export class RadiusItem {
     }
 }
 
-export class DirectionalItem {
+export class DirectionalRectItem {
     constructor(x, y, width, height, directionWidth, directionLength, imgSrc, layerDraw, iconColor, directionColor) {
         this.x = x
         this.y = y
@@ -198,6 +198,100 @@ export class DirectionalItem {
         ctx.fillStyle = this.grabColor
         ctx.restore()
 
+        const grabPos = rotatePoint(centerX, centerY + this.directionLength + this.grabRadius * 2, centerX, centerY, this.rotation)
+        ctx.beginPath()
+        ctx.arc(grabPos.x, grabPos.y, this.grabRadius, 0, Math.PI * 2, false)
+        ctx.fillStyle = this.grabColor
+        ctx.fill()
+        ctx.closePath()
+
+        drawRoundedRect(ctx, this.x, this.y, this.width, this.height, 4, this.iconColor)
+
+        const imgWidth = this.image.width
+        const imgHeight = this.image.height
+        const aspectRatio = imgWidth / imgHeight
+        let drawWidth = 0
+        let drawHeight = 0
+        if (imgWidth > imgHeight) {
+            drawWidth = this.width - PADDING
+            drawHeight = drawWidth / aspectRatio
+        } else {
+            drawHeight = this.height - PADDING
+            drawWidth = drawHeight * aspectRatio
+        }
+        let x = this.x + (this.width - drawWidth) / 2
+        let y = this.y + (this.height - drawHeight) / 2
+
+        ctx.drawImage(this.image, x, y, drawWidth, drawHeight)
+    }
+
+    checkPointCollision(x, y) {
+        return {
+            isColliding: x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height,
+            offsetX: x - this.x,
+            offsetY: y - this.y,
+        }
+    }
+
+    checkGrabCollision(x, y) {
+        const centerX = this.x + (this.width / 2)
+        const centerY = this.y + (this.height / 2)
+
+        const grabPos = rotatePoint(centerX, centerY + this.directionLength + this.grabRadius * 2, centerX, centerY, this.rotation)
+
+        return (x - grabPos.x) * (x - grabPos.x) + (y - grabPos.y) * (y - grabPos.y) <= this.grabRadius * this.grabRadius
+    }
+
+    rotateTowards(x, y) {
+        console.log(`Going to face: ${x}, ${y}`)
+        const centerX = this.x + (this.width / 2)
+        const centerY = this.y + (this.height / 2)
+
+        const rotation = calculateAngle(x, y, centerX, centerY)
+
+        this.rotation = rotation + Math.PI / 2
+        this.layerDraw()
+    }
+}
+
+export class DirectionalItem {
+    constructor(x, y, width, height, imgSrc, layerDraw, iconColor) {
+        this.x = x
+        this.y = y
+        this.width = width
+        this.height = height
+        this.layerDraw = layerDraw
+        this.iconColor = iconColor
+        this.rotation = 0
+        this.grabColor = '#963939'
+        this.grabRadius = 6
+
+        this.image = new Image()
+        this.image.src = imgSrc
+        this.image.onload = layerDraw
+
+        this.arrow = new Image()
+        this.arrow.src = './assets/miscellaneous/arrow.png'
+        this.arrow.onload = layerDraw
+    }
+
+    moveTo(x, y) {
+        console.log(x, y)
+        this.x = x
+        this.y = y
+        this.layerDraw()
+    }
+
+    draw(ctx) {
+        const centerX = this.x + (this.width / 2)
+        const centerY = this.y + (this.height / 2)
+        ctx.save()
+        ctx.translate(centerX, centerY);
+        ctx.rotate(this.rotation);
+        ctx.drawImage(this.arrow, -this.directionWidth / 2, 0, 78, 373);
+        console.log('Drew the arrow')
+        ctx.restore()
+        
         const grabPos = rotatePoint(centerX, centerY + this.directionLength + this.grabRadius * 2, centerX, centerY, this.rotation)
         ctx.beginPath()
         ctx.arc(grabPos.x, grabPos.y, this.grabRadius, 0, Math.PI * 2, false)
