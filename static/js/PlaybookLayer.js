@@ -1,6 +1,7 @@
 import { AbilityFactory } from "./Abilities.js";
 import { SponsorFactory } from "./Sponsors.js";
 import { MiscFactory } from "./Miscellaneous.js";
+import { drawRoundedRect } from "./drawUtils.js";
 
 export class PlaybookLayer {
     constructor() {
@@ -16,6 +17,9 @@ export class PlaybookLayer {
 
         this.selectedGrabItemIndex = -1
 
+        this.deleteIcon = new Image()
+        this.deleteIcon.src = './assets/ui-icons/delete.svg'
+
         this.resize()
     }
 
@@ -25,11 +29,22 @@ export class PlaybookLayer {
     }
 
     onMouseUp(e) {
+        if (this.selectedItemIndex != -1) {
+            if (
+                (this.items[this.selectedItemIndex].x < 120 && this.items[this.selectedItemIndex].x + this.items[this.selectedItemIndex].width > 20)
+                && (this.items[this.selectedItemIndex].y < this.canvas.height - 20 && this.items[this.selectedItemIndex].y + this.items[this.selectedItemIndex].height > this.canvas.height - 120)
+            ) {
+                this.items.splice(this.selectedItemIndex, 1)
+            }
+        }
+
         console.log('reset selected item')
         this.selectedItemIndex = -1
         this.collisionOffsetX = 0
         this.collisionOffsetY = 0
         this.selectedGrabItemIndex = -1
+
+        this.draw()
     }
 
     onMouseMove(e) {
@@ -39,6 +54,8 @@ export class PlaybookLayer {
 
         if (this.selectedItemIndex !== -1) {
             this.items[this.selectedItemIndex].moveTo(this.mouseX - this.collisionOffsetX, this.mouseY - this.collisionOffsetY)
+            
+            this.drawDeleteBox()
         } else if (this.selectedGrabItemIndex !== -1) {
             this.items[this.selectedGrabItemIndex].rotateTowards(this.mouseX, this.mouseY)
         }
@@ -114,9 +131,13 @@ export class PlaybookLayer {
     }
 
     draw() {
-        console.log('draw called')
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         this.items.forEach((ability) => ability.draw(this.ctx))
+    }
+
+    drawDeleteBox() {
+        drawRoundedRect(this.ctx, 20, this.canvas.height - 20 - 100, 100, 100, 12, '#FF101080')
+        this.ctx.drawImage(this.deleteIcon, 40, this.canvas.height - 100, 60, 60)
     }
 
     getImageData() {
