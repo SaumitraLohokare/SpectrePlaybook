@@ -4,6 +4,7 @@ import { DrawLayer } from "./DrawLayer.js";
 import { PlaybookLayer } from "./PlaybookLayer.js";
 import { SPONSOR } from "./Sponsors.js";
 import { MISC } from "./Miscellaneous.js";
+import { downloadAsPng } from "./downloadUtils.js";
 
 export class App {
     constructor() {
@@ -142,15 +143,21 @@ export class App {
 
         // Disable zoming
         // Keyboard shortcuts
-        // TODO: Might wanna add these to the canvasConatiner instead of document. Incase we implement adding comments to custon sticky notes.
         document.addEventListener('keydown', (event) => {
             // Check for zoom key combinations: Ctrl + (plus or minus) or Ctrl + scroll
             if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0' || event.key === '+' || event.key === '_')) {
                 event.preventDefault(); // Prevent the default zoom action
             }
 
+            // Saving to png
+            if (event.ctrlKey && event.key === 's') {
+                event.preventDefault()
+
+                downloadAsPng([this.baseLayer.getImageData(), this.playbookLayer.getImageData(), this.drawLayer.getImageData()])
+            }
+
             switch (event.key) {
-                case 's':
+                case 'p':
                     pointerBtn.click(); // Simulate button click
                     break;
                 case 'd':
@@ -211,98 +218,122 @@ export class App {
         const reconWing = document.getElementById("Recon Wing");
 
         splinterGrenade.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.SPLINTER_GRENADE, e.clientX, e.clientY);
         });
 
         adrenalink.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.ADRENALINK, e.clientX, e.clientY);
         });
 
         flashGrenade.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.FLASH_GRENADE, e.clientX, e.clientY);
         });
 
         hiddenGrasp.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.HIDDEN_GRASP, e.clientX, e.clientY);
         });
 
         meltdown.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.MELTDOWN, e.clientX, e.clientY);
         });
 
         smokeShift.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.SMOKE_SHIFT, e.clientX, e.clientY);
         });
 
         hexBarrier.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.HEX_BARRIER, e.clientX, e.clientY);
         });
 
         swarmGrenade.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.SWARM_GRENADE, e.clientX, e.clientY);
         });
 
         twinMend.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.TWIN_MEND, e.clientX, e.clientY);
         });
 
         arcSentry.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.ARC_SENTRY, e.clientX, e.clientY);
         });
 
         hullMine.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.HULL_MINE, e.clientX, e.clientY);
         });
 
         waveScan.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.WAVE_SCAN, e.clientX, e.clientY);
         });
 
         dualAmp.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.DUAL_AMP, e.clientX, e.clientY);
         });
 
         nanoSphere.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.NANO_SPHERE, e.clientX, e.clientY);
         });
 
         vectorWall.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.VECTOR_WALL, e.clientX, e.clientY);
         });
 
         deadZone.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.DEAD_ZONE, e.clientX, e.clientY);
         });
 
         dupe.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.DUPE, e.clientX, e.clientY);
         });
 
         partition.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.PARTITION, e.clientX, e.clientY);
         });
 
         dazzler.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.DAZZLER, e.clientX, e.clientY);
         });
 
         hyperDome.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.HYPER_DOME, e.clientX, e.clientY);
         });
 
         patches.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.PATCHES, e.clientX, e.clientY);
         });
 
         glareBurst.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.GLARE_BURST, e.clientX, e.clientY);
         });
 
         pulsefinder.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.PULSEFINDER, e.clientX, e.clientY);
         });
 
         reconWing.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addAbilityByDrag(ABILITY.RECON_WING, e.clientX, e.clientY);
         });
 
@@ -319,34 +350,43 @@ export class App {
         const vectorDynamics = document.getElementById("Vector Dynamics");
 
         bloomTechnologies.addEventListener('mousedown', (e) => {
+            this.resetEditState()
+            
             this.playbookLayer.addSponsorByDrag(SPONSOR.BLOOM_TECHNOLOGIES, e.clientX, e.clientY);
         });
 
         ghostlinkCollective.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addSponsorByDrag(SPONSOR.GHOSTLINK_COLLECTIVE, e.clientX, e.clientY);
         });
 
         morrgenUnited.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addSponsorByDrag(SPONSOR.MORRGEN_UNITED, e.clientX, e.clientY);
         });
 
         muuRobotics.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addSponsorByDrag(SPONSOR.MUU_ROBOTICS, e.clientX, e.clientY);
         });
 
         pinnacleInternational.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addSponsorByDrag(SPONSOR.PINNACLE_INTERNATIONAL, e.clientX, e.clientY);
         });
 
         rykerIndustries.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addSponsorByDrag(SPONSOR.RYKER_INDUSTRIES, e.clientX, e.clientY);
         });
 
         umbraReconnaissance.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addSponsorByDrag(SPONSOR.UMBRA_RECONNAISSANCE, e.clientX, e.clientY);
         });
 
         vectorDynamics.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addSponsorByDrag(SPONSOR.VECTOR_DYNAMICS, e.clientX, e.clientY);
         });
 
@@ -356,6 +396,7 @@ export class App {
         const zeus = document.getElementById("Zeus");
 
         zeus.addEventListener('mousedown', (e) => {
+            this.resetEditState()
             this.playbookLayer.addMiscByDrag(MISC.ZEUS, e.clientX, e.clientY);
         });
     }
@@ -373,7 +414,9 @@ export class App {
         const closeButtonAbilitiesContainer = document.getElementById('close-button-abilities-container')
         const closeButtonMiscellaneousContainer = document.getElementById('close-button-miscellaneous-container')
 
-        function hideContainers() {
+
+
+        const hideContainers = () => {
             sponsorsContainer.classList.add("hidden")
             abilitiesContainer.classList.add("hidden")
             miscellaneousContainer.classList.add("hidden")
@@ -405,6 +448,19 @@ export class App {
         closeButtonMiscellaneousContainer.addEventListener('click', () => {
             hideContainers()
         })
+    }
+
+    resetEditState() {
+        this.setEditState(EDIT_STATE.NONE)
+
+        const pointerBtn = document.getElementById('pointer-btn');
+        const penBtn = document.getElementById('pen-btn');
+        const eraserBtn = document.getElementById('eraser-btn');
+        const textBtn = document.getElementById('comment-btn');
+
+        [pointerBtn, penBtn, eraserBtn, textBtn].forEach(btn => btn.classList.remove('selected'));
+
+        pointerBtn.classList.add('selected');
     }
 }
 

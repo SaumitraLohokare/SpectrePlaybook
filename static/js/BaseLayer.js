@@ -14,6 +14,8 @@ export class BaseLayer {
     }
 
     drawMap() {
+        // this.ctx.fillStyle = '#292929'
+        // this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
         const img = new Image();
         console.log(`Setting map to: ${this.currentMap}`);
         img.src = this.currentMap;
@@ -49,5 +51,9 @@ export class BaseLayer {
                 console.error(`Trying to set current map name to invalid value: ${mapName}`)
                 break;
         }
+    }
+
+    getImageData() {
+        return this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height)
     }
 }
