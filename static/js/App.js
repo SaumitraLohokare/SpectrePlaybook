@@ -417,7 +417,6 @@ export class App {
 
 
         const hideContainers = () => {
-            this.resetEditState()
             sponsorsContainer.classList.add("hidden")
             abilitiesContainer.classList.add("hidden")
             miscellaneousContainer.classList.add("hidden")
