@@ -32,16 +32,19 @@ export class DrawLayer {
                 this.currentPath = new Path2D()
                 this.currentPath.moveTo(e.offsetX, e.offsetY)
                 this.currentPath.lineTo(e.offsetX, e.offsetY)
+                this.currentPathPoints = []
                 this.currentPathPoints.push([e.offsetX, e.offsetY])
                 this.currentPathPoints.push([e.offsetX, e.offsetY])
-    
+                
             } else if (this.editState === 2) {
                 this.currentPath = new Path2D()
                 this.currentPath.moveTo(e.offsetX, e.offsetY)
                 this.currentPath.lineTo(e.offsetX, e.offsetY)
+                this.currentPathPoints = []
                 this.currentPathPoints.push([e.offsetX, e.offsetY])
                 this.currentPathPoints.push([e.offsetX, e.offsetY])
 
+                console.log('Mouse Down')
                 const { isColliding, pathIndex } = this.checkPathCollision(e.offsetX, e.offsetY)
                 if (isColliding) {
                     this.paths.splice(pathIndex, 1)
@@ -63,10 +66,14 @@ export class DrawLayer {
                 this.currentPath.lineTo(e.offsetX, e.offsetY)
                 this.currentPathPoints.push([e.offsetX, e.offsetY])
                 this.pathsData.push(this.currentPathPoints)
-                this.paths.push(new Path(this.currentPath, this.drawColor, this.lineWidth))
+                this.paths.push(new Path(this.currentPath, this.currentPathPoints, this.drawColor, this.lineWidth))
+
+                console.log(this.currentPathPoints)
         
                 this.draw()
             } else if (this.editState === 2) {
+                console.log(this.pathsData)
+
                 const { isColliding, pathIndex } = this.checkPathCollision(e.offsetX, e.offsetY)
                 if (isColliding) {
                     this.paths.splice(pathIndex, 1)
@@ -84,6 +91,7 @@ export class DrawLayer {
                 this.currentPathPoints.push([e.offsetX, e.offsetY])
     
                 this.draw() // To preserve opacity
+                this.resetContextDefaults()
                 this.ctx.stroke(this.currentPath)
             } else if (this.editState === 2) {
                 this.currentPath.lineTo(e.offsetX, e.offsetY)
@@ -92,6 +100,7 @@ export class DrawLayer {
                 this.ctx.lineWidth = 4
                 this.ctx.stroke(this.currentPath)
 
+                console.log('Mouse Move')
                 const { isColliding, pathIndex } = this.checkPathCollision(e.offsetX, e.offsetY)
                 if (isColliding) {
                     console.log(pathIndex)
@@ -112,8 +121,8 @@ export class DrawLayer {
     }
 
     checkPathCollision(x, y) {
-        for (let i = 0; i < this.paths.length; i++) {
-            if (this.ctx.isPointInPath(this.paths[i].path2d, x, y)) {
+        for (let i in this.paths) {
+            if (this.paths[i].isPointInPath(x, y)) {
                 return { isColliding: true, pathIndex: i }
             }
         }
