@@ -174,4 +174,8 @@ export class DrawLayer {
     startErasing() {
         this.editState = 2 // Erasing
     }
+
+    getImageData() {
+        return this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height)
+    }
 }

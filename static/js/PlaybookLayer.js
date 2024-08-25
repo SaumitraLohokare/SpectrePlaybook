@@ -118,4 +118,8 @@ export class PlaybookLayer {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         this.items.forEach((ability) => ability.draw(this.ctx))
     }
+
+    getImageData() {
+        return this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height)
+    }
 }
